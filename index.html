@@ -1,0 +1,456 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Unfold Solutions — Unfolding Potentials, Nurturing Growth</title>
+
+  <style>
+    :root{
+      --primary:#0b4bd6;      /* professional blue */
+      --accent:#082f8a;
+      --muted:#4b5563;
+      --bg:#f6f8fb;
+      --glass: rgba(255,255,255,0.10);
+      --card-shadow: 0 18px 48px rgba(11,75,214,0.08);
+      --radius: 14px;
+      --glass-border: rgba(11,75,214,0.06);
+    }
+    *{box-sizing:border-box;margin:0;padding:0}
+    html,body{height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;color:#0f172a;background:linear-gradient(180deg,#ffffff,#eef6ff);-webkit-font-smoothing:antialiased}
+    a{color:inherit;text-decoration:none}
+    img{max-width:100%;display:block}
+
+    /* NAV */
+    .navbar{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(6px);border-bottom:1px solid var(--glass-border);z-index:120;transition:all .25s}
+    .nav-inner{max-width:1200px;margin:0 auto;padding:12px 20px;display:flex;align-items:center;justify-content:space-between;gap:16px}
+    .brand{display:flex;align-items:center;gap:12px}
+    .logo-box{width:56px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;box-shadow:0 8px 30px rgba(11,75,214,0.18);overflow:hidden}
+    .logo-box img{width:48px;height:34px;object-fit:contain;display:block}
+    .brand h1{font-size:1rem;color:var(--primary);font-weight:900;letter-spacing:.6px}
+    .nav-links{display:flex;gap:18px;list-style:none;align-items:center}
+    .nav-links a{padding:8px 10px;border-radius:10px;color:#334155;font-weight:700;transition:all .18s}
+    .nav-links a:hover, .nav-links a.active{color:#fff;background:linear-gradient(90deg,var(--primary),var(--accent));box-shadow:0 8px 24px rgba(11,75,214,0.12)}
+    .mobile-toggle{display:none;background:none;border:0;font-size:20px;color:var(--primary);cursor:pointer}
+
+    /* HERO */
+    .hero{padding:120px 12px 70px;text-align:center;background:linear-gradient(180deg,#f6f9ff,#eef6ff);position:relative;overflow:hidden}
+    .hero .hero-inner{max-width:1100px;margin:0 auto;position:relative;z-index:2}
+    .hero h2{font-size:2.6rem;line-height:1.02;margin:6px 0 12px;font-weight:900;color:var(--primary)}
+    .hero p{color:#334155;font-weight:500;max-width:820px;margin:0 auto 22px}
+    .hero .cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+    .btn{padding:12px 20px;border-radius:12px;font-weight:700;cursor:pointer;border:0}
+    .btn-primary{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;box-shadow:0 18px 36px rgba(11,75,214,0.12);transform:translateY(0);transition:transform .18s,box-shadow .18s}
+    .btn-primary:hover{transform:translateY(-3px);box-shadow:0 28px 56px rgba(11,75,214,0.16)}
+    .btn-outline{background:transparent;border:2px solid rgba(11,75,214,0.12);color:var(--primary)}
+
+    /* decorative hero shapes */
+    .hero-deco{position:absolute;right:-60px;top:-40px;opacity:.12;filter:blur(10px);transform:rotate(15deg);width:420px;height:420px;background:radial-gradient(circle at 30% 30%, var(--primary), transparent 40%);}
+    .hero-wave{position:absolute;left:0;right:0;bottom:-1px;height:80px;background:linear-gradient(180deg,transparent,#fff);opacity:.8}
+
+    /* SECTIONS */
+    section{padding:72px 20px}
+    .container{max-width:1100px;margin:0 auto}
+    .section-header{text-align:center;margin-bottom:34px}
+    .section-title{font-size:1.8rem;color:var(--primary);font-weight:900}
+    .section-sub{color:var(--muted);max-width:760px;margin:12px auto 0;font-weight:500}
+
+    /* ABOUT */
+    .about-grid{display:grid;grid-template-columns:1fr 1fr;gap:28px;align-items:center}
+    .card{background:#fff;padding:22px;border-radius:var(--radius);box-shadow:var(--card-shadow);border:1px solid rgba(2,6,23,0.04);transition:transform .18s,box-shadow .18s}
+    .card:hover{transform:translateY(-8px);box-shadow:0 36px 80px rgba(11,75,214,0.10)}
+    .stats{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+    .stat{background:linear-gradient(180deg,#fff,#f8fbff);padding:18px;border-radius:12px;text-align:center;font-weight:700;color:var(--primary)}
+
+    /* TEAM */
+    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .team-card{text-align:center;padding:22px;border-radius:18px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--card-shadow);transition:transform .18s}
+    .team-card:hover{transform:translateY(-8px)}
+    .team-avatar{width:110px;height:110px;border-radius:999px;margin:0 auto 12px;overflow:hidden;display:block;background:linear-gradient(135deg,#fff,#eef6ff);border:6px solid #fff;box-shadow:0 12px 36px rgba(11,75,214,0.12)}
+    .team-avatar img{width:100%;height:100%;object-fit:cover;display:block}
+    .team-name{font-weight:900;color:#0f172a}
+    .team-role{color:var(--muted);font-weight:600;font-size:.95rem;margin-top:6px}
+
+    /* SERVICES */
+    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    .service{padding:22px;border-radius:16px;background:linear-gradient(180deg,#fff,#fbfdff);box-shadow:var(--card-shadow);border-top:6px solid var(--primary);display:flex;flex-direction:column;gap:12px;min-height:140px}
+    .service h4{color:var(--primary);margin-bottom:4px}
+    .service p{color:#334155;flex:1}
+    .service .icon{width:52px;height:52px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800;font-size:20px;box-shadow:0 10px 28px rgba(11,75,214,0.10)}
+
+    /* GALLERY */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
+    .gallery-item{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:#fff}
+    .gallery-item img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .35s,filter .25s}
+    .gallery-item:hover img{transform:scale(1.05);filter:brightness(.98)}
+    .gallery-caption{position:absolute;left:12px;bottom:12px;background:rgba(2,6,23,0.5);color:#fff;padding:8px 10px;border-radius:8px;font-weight:700;font-size:.9rem}
+
+    /* MODAL LIGHTBOX */
+    .lightbox{position:fixed;inset:0;background:rgba(2,6,23,0.8);display:flex;align-items:center;justify-content:center;padding:20px;z-index:300;opacity:0;pointer-events:none;transition:opacity .2s}
+    .lightbox.show{opacity:1;pointer-events:auto}
+    .lightbox img{max-width:95%;max-height:85%;box-shadow:0 30px 80px rgba(2,6,23,0.6);border-radius:10px}
+
+    /* CONTACT */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
+    .contact-info .contact-item{display:flex;gap:12px;align-items:center;padding:14px;border-radius:12px;background:linear-gradient(180deg,rgba(255,255,255,0.06),rgba(255,255,255,0.02));border:1px solid rgba(255,255,255,0.06)}
+    .contact-icon{width:46px;height:46px;border-radius:10px;background:rgba(11,75,214,0.08);display:flex;align-items:center;justify-content:center;font-size:18px}
+
+    /* BACK TO TOP */
+    #backTop{position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;border-radius:12px;padding:12px 14px;box-shadow:0 18px 36px rgba(11,75,214,0.12);cursor:pointer;display:none;z-index:400}
+
+    /* FOOTER */
+    footer{background:#071028;color:#e6eef8;padding:36px 20px;text-align:center;border-top:1px solid rgba(255,255,255,0.03)}
+
+    /* REVEAL */
+    .reveal{opacity:0;transform:translateY(12px);transition:all .6s cubic-bezier(.2,.9,.2,1)}
+    .reveal.show{opacity:1;transform:none}
+
+    /* RESPONSIVE */
+    @media (max-width:900px){
+      .about-grid,.contact-grid{grid-template-columns:1fr}
+      .team-grid{grid-template-columns:repeat(2,1fr)}
+      .services-grid{grid-template-columns:repeat(2,1fr)}
+      .logo-box{width:48px}
+    }
+    @media (max-width:640px){
+      .team-grid{grid-template-columns:1fr}
+      .services-grid{grid-template-columns:1fr}
+      .nav-links{display:none}
+      .mobile-toggle{display:block}
+      .hero h2{font-size:1.6rem}
+      .hero p{font-size:.98rem}
+      .navbar{padding:8px 0}
+      .gallery-item img{height:160px}
+    }
+  </style>
+</head>
+<body>
+  <!-- NAV -->
+  <nav class="navbar" id="navbar">
+    <div class="nav-inner">
+      <a href="#home" class="brand" aria-label="Unfold Solutions home">
+        <div class="logo-box" aria-hidden="true">
+          <img src="assets/logo/unfold.png" alt="Unfold Solutions logo">
+        </div>
+        <h1>Unfold Solutions</h1>
+      </a>
+
+      <ul class="nav-links" id="navLinks" role="navigation" aria-label="Primary">
+        <li><a href="#home" class="nav-link">Home</a></li>
+        <li><a href="#about" class="nav-link">About</a></li>
+        <li><a href="#services" class="nav-link">Services</a></li>
+        <li><a href="#team" class="nav-link">Team</a></li>
+        <li><a href="#gallery" class="nav-link">Gallery</a></li>
+        <li><a href="#contact" class="nav-link">Contact</a></li>
+      </ul>
+
+      <button class="mobile-toggle" id="mobileToggle" aria-label="Open menu">☰</button>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <header id="home" class="hero" aria-labelledby="heroTitle">
+    <div class="hero-deco" aria-hidden="true"></div>
+    <div class="hero-inner container">
+      <h2 id="heroTitle">Unfolding potentials. Nurturing growth.</h2>
+      <p>We partner with organizations to design learning, innovation and digital solutions that scale impact — practical, inclusive and future-ready.</p>
+      <div class="cta">
+        <a class="btn btn-primary" href="#services">Explore Services</a>
+        <a class="btn btn-outline" href="#contact">Request a Consultation</a>
+      </div>
+    </div>
+    <div class="hero-wave" aria-hidden="true"></div>
+  </header>
+
+  <!-- ABOUT -->
+  <section id="about" class="container reveal">
+    <div class="section-header">
+      <div class="section-title">About Unfold Solutions</div>
+      <div class="section-sub">We design practical, people-centered solutions that build capability and unlock organizational potential.</div>
+    </div>
+
+    <div class="about-grid">
+      <div class="card">
+        <h3 style="color:var(--primary);margin-bottom:10px">What we do</h3>
+        <p style="color:#334155;line-height:1.6">Strategy &amp; advisory, learning &amp; development, digital transformation and program delivery — with a focus on lasting results and local ownership.</p>
+
+        <div style="margin-top:18px" class="stats">
+          <div class="stat">Human-centered</div>
+          <div class="stat">Evidence-driven</div>
+          <div class="stat">Collaborative</div>
+          <div class="stat">Impact-focused</div>
+        </div>
+      </div>
+
+      <div class="card">
+        <h3 style="color:var(--primary);margin-bottom:10px">Why clients choose us</h3>
+        <ul style="color:#334155;line-height:1.8;padding-left:18px;margin-top:8px">
+          <li>Tailored solutions grounded in context</li>
+          <li>Cross-disciplinary team with hands-on experience</li>
+          <li>Practical tools to sustain change</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="container reveal">
+    <div class="section-header">
+      <div class="section-title">Service Pillars</div>
+      <div class="section-sub">Integrated services to unlock capability and deliver measurable results</div>
+    </div>
+
+    <div class="services-grid">
+      <div class="service card">
+        <div class="icon">L</div>
+        <h4>Learning &amp; Development</h4>
+        <p>Curriculum design, facilitation, LMS support, mentoring and evaluation.</p>
+      </div>
+      <div class="service card">
+        <div class="icon">C</div>
+        <h4>Consulting &amp; Advisory</h4>
+        <p>Strategy, organizational development, HR systems and change management.</p>
+      </div>
+      <div class="service card">
+        <div class="icon">D</div>
+        <h4>Digital &amp; Data</h4>
+        <p>Data systems, cloud strategy and digital process optimization.</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TEAM -->
+  <section id="team" class="container reveal">
+    <div class="section-header">
+      <div class="section-title">Our Team</div>
+      <div class="section-sub">Experienced, purpose-driven professionals</div>
+    </div>
+
+    <div class="team-grid" id="teamGrid">
+      <div class="team-card">
+        <div class="team-avatar"><img src="assets/team/mekonnen.jpg" alt="Mekonnen Mengesha"></div>
+        <div class="team-name">Mekonnen Mengesha</div>
+        <div class="team-role">Head of Organizational Learning &amp; Growth</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar"><img src="assets/team/chere.jpg" alt="Chere Lemma"></div>
+        <div class="team-name">Chere Lemma</div>
+        <div class="team-role">Head of Technology &amp; Process Optimization</div>
+      </div>
+
+      <div class="team-card">
+        <div class="team-avatar"><img src="assets/team/dawit.jpg" alt="Dawit Teshome"></div>
+        <div class="team-name">Dawit Teshome</div>
+        <div class="team-role">Head of Business Innovation &amp; Consultancy</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- GALLERY (static, backend-only updates) -->
+  <section id="gallery" class="container reveal">
+    <div class="section-header">
+      <div class="section-title">Project Gallery</div>
+      <div class="section-sub">Showcase of work, training and events. Images are managed on the backend.</div>
+    </div>
+
+    <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item card"><img src="assets/gallery/project-1.png" alt="Project 1" loading="lazy"><div class="gallery-caption">Workshop — 2025</div></div>
+      <div class="gallery-item card"><img src="assets/gallery/project-2.png" alt="Project 2" loading="lazy"><div class="gallery-caption">Pilot Site</div></div>
+      <div class="gallery-item card"><img src="assets/gallery/project-3.png" alt="Project 3" loading="lazy"><div class="gallery-caption">Community Event</div></div>
+      <div class="gallery-item card"><img src="assets/gallery/project-4.png" alt="Project 4" loading="lazy"><div class="gallery-caption">Training Session</div></div>
+      <div class="gallery-item card"><img src="assets/gallery/project-5.png" alt="Project 5" loading="lazy"><div class="gallery-caption">Stakeholder Meeting</div></div>
+      <div class="gallery-item card"><img src="assets/gallery/project-6.png" alt="Project 6" loading="lazy"><div class="gallery-caption">Launch</div></div>
+    </div>
+
+    <!-- lightbox -->
+    <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
+      <img id="lightboxImg" alt="Gallery image">
+    </div>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="container reveal">
+    <div class="section-header">
+      <div class="section-title">Contact Us</div>
+      <div class="section-sub">Let's discuss how we can help bring your vision to life</div>
+    </div>
+
+    <div class="contact-grid">
+      <div class="card contact-info">
+        <div style="margin-bottom:12px;font-weight:800;color:var(--primary)">Get in touch</div>
+
+        <div class="contact-item">
+          <div class="contact-icon">✉️</div>
+          <div>
+            <div style="font-weight:700">Email</div>
+            <div style="color:var(--muted)">unfoldbusinesssolutions@gmail.com</div>
+          </div>
+        </div>
+
+        <div style="height:10px"></div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <div>
+            <div style="font-weight:700">Phone</div>
+            <div style="color:var(--muted)">+251 910 832 473</div>
+          </div>
+        </div>
+
+        <div style="height:10px"></div>
+
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <div>
+            <div style="font-weight:700">Address</div>
+            <div style="color:var(--muted)">22 Quality Bldg, Addis Ababa</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="card">
+        <form id="contactForm" novalidate>
+          <div style="display:grid;gap:10px">
+            <input class="form-input" id="cname" name="name" placeholder="Full name" required style="padding:12px;border-radius:10px;border:1px solid #e6eef8">
+            <input class="form-input" id="cemail" name="email" type="email" placeholder="Email address" required style="padding:12px;border-radius:10px;border:1px solid #e6eef8">
+            <input class="form-input" id="csubject" name="subject" placeholder="Subject" style="padding:12px;border-radius:10px;border:1px solid #e6eef8">
+            <textarea id="cmessage" name="message" placeholder="Message" rows="5" style="padding:12px;border-radius:10px;border:1px solid #e6eef8"></textarea>
+            <button type="submit" class="btn btn-primary" style="width:100%">Send Message</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div class="container" style="max-width:900px">
+      <div style="font-weight:800;font-size:1.05rem">Unfold Solutions</div>
+      <div style="opacity:.85;margin:8px 0">© <span id="year"></span> Unfold Solutions — All rights reserved.</div>
+      <div style="color:var(--muted);font-size:.95rem">Bringing ideas &amp; innovation to life through people-centered technology and learning</div>
+    </div>
+  </footer>
+
+  <div id="backTop" title="Back to top">↑</div>
+
+  <!-- SCRIPTS -->
+  <script>
+    (function(){
+      // mobile toggle
+      const mobileToggle = document.getElementById('mobileToggle');
+      const navLinks = document.getElementById('navLinks');
+      mobileToggle.addEventListener('click', ()=> {
+        if(navLinks.style.display === 'flex'){ navLinks.style.display = '' }
+        else {
+          navLinks.style.display = 'flex';
+          navLinks.style.flexDirection = 'column';
+          navLinks.style.background = 'rgba(255,255,255,0.98)';
+          navLinks.style.position = 'absolute';
+          navLinks.style.right = '18px';
+          navLinks.style.top = '64px';
+          navLinks.style.padding = '12px';
+          navLinks.style.borderRadius = '12px';
+        }
+      });
+
+      // Navbar shadow on scroll
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', ()=> {
+        if(window.scrollY > 40) navbar.style.boxShadow = '0 12px 40px rgba(2,6,23,0.08)';
+        else navbar.style.boxShadow = '';
+      });
+
+      // smooth scroll anchors + active link highlight
+      const links = document.querySelectorAll('.nav-link');
+      function onScrollSpy() {
+        const fromTop = window.scrollY + 120;
+        links.forEach(link => {
+          const section = document.querySelector(link.getAttribute('href'));
+          if(section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop){
+            links.forEach(l=>l.classList.remove('active'));
+            link.classList.add('active');
+          }
+        });
+      }
+      document.querySelectorAll('a[href^="#"]').forEach(a=>{
+        a.addEventListener('click', function(e){
+          const href = this.getAttribute('href');
+          if(!href || href === '#') return;
+          const target = document.querySelector(href);
+          if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
+        });
+      });
+      window.addEventListener('scroll', onScrollSpy);
+      onScrollSpy();
+
+      // contact form simulated submit
+      const cForm = document.getElementById('contactForm');
+      cForm.addEventListener('submit', function(e){
+        e.preventDefault();
+        const btn = this.querySelector('button[type="submit"]');
+        const prev = btn.textContent;
+        btn.textContent = 'Sending...';
+        btn.disabled = true;
+        setTimeout(()=> {
+          btn.textContent = 'Sent ✓';
+          setTimeout(()=>{ btn.textContent = prev; btn.disabled=false; cForm.reset(); }, 1500);
+        },900);
+      });
+
+      // year
+      document.getElementById('year').textContent = new Date().getFullYear();
+
+      // TEAM fallback for missing avatars
+      document.querySelectorAll('.team-avatar img').forEach(img=>{
+        img.onerror = function(){
+          const parent = this.parentElement;
+          parent.style.background = '#eef5ff';
+          parent.innerHTML = '<div style="font-weight:800;color:var(--primary);font-size:32px;display:flex;align-items:center;justify-content:center;height:100%">'+
+            (this.alt ? this.alt.split(' ').map(s=>s[0]).slice(0,2).join('') : 'U') + '</div>';
+        };
+      });
+
+      // GALLERY: static images interactive (lightbox)
+      const galleryGrid = document.getElementById('galleryGrid');
+      const lightbox = document.getElementById('lightbox');
+      const lightboxImg = document.getElementById('lightboxImg');
+
+      function openLightbox(src, alt){
+        lightboxImg.src = src;
+        lightboxImg.alt = alt || '';
+        lightbox.classList.add('show');
+        lightbox.setAttribute('aria-hidden','false');
+      }
+      document.querySelectorAll('.gallery-item img').forEach(img=>{
+        img.addEventListener('click', ()=> openLightbox(img.src, img.alt));
+        img.onerror = ()=> { img.src = 'data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" width="800" height="600"><rect width="100%" height="100%" fill="%23edf7fb"/><text x="50%" y="50%" dominant-baseline="middle" text-anchor="middle" fill="%230a2540" font-size="24">Image not found</text></svg>' };
+      });
+
+      lightbox.addEventListener('click', function(e){
+        if(e.target !== lightboxImg) { lightbox.classList.remove('show'); lightbox.setAttribute('aria-hidden','true'); lightboxImg.src=''; }
+      });
+      document.addEventListener('keydown', function(e){
+        if(e.key === 'Escape') { lightbox.classList.remove('show'); lightbox.setAttribute('aria-hidden','true'); lightboxImg.src=''; }
+      });
+
+      // reveal on scroll (IntersectionObserver)
+      const observer = new IntersectionObserver((entries)=>{
+        entries.forEach(entry=>{
+          if(entry.isIntersecting) entry.target.classList.add('show');
+        });
+      }, {threshold: 0.12});
+      document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
+
+      // back to top
+      const backTop = document.getElementById('backTop');
+      window.addEventListener('scroll', ()=> {
+        if(window.scrollY > 320) backTop.style.display = 'block';
+        else backTop.style.display = 'none';
+      });
+      backTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
+
+    })();
+  </script>
+</body>
+</html>
