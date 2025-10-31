@@ -3,331 +3,340 @@
 <head>
   <meta charset="utf-8" />
   <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Unfold Solutions — Unfolding potentials, nurturing growth</title>
+  <title>Unfold Solutions - Unfolding Potentials, Nurturing Growth</title>
   <meta name="description" content="Unfold Solutions — people-centered consultancy delivering strategy, learning and digital systems. Based in Addis Ababa, serving partners globally." />
-
   <style>
+    /* Core reset & typography */
     :root{
-      --bg-0:#f7fbff;--bg-1:#eef9ff;
+      --primary:#0ea5e9; --accent:#06b6d4; --deep:#0f172a; --muted:#475569;
       --glass: rgba(255,255,255,0.7);
-      --primary:#0b66d0; --accent:#26d0ce; --deep:#06324d;
-      --muted:#2b4b63; --card:#ffffff; --radius:16px;
-      --glass-blur:10px; --shine:linear-gradient(90deg,var(--primary),var(--accent));
+      --radius:16px;
     }
-
-    /* Reset */
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:Inter,ui-sans-serif,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,var(--bg-0),var(--bg-1));color:var(--deep);-webkit-font-smoothing:antialiased}
-    a{color:inherit;text-decoration:none}
-    img{display:block;max-width:100%}
+    html{scroll-behavior:smooth;height:100%}
+    body{font-family:Inter,system-ui,-apple-system,'Segoe UI',Roboto,Arial;color:var(--deep);line-height:1.6;background:linear-gradient(180deg,#f8fbff,#eef9ff);overflow-x:hidden}
 
-    /* Nav */
-    .navbar{position:fixed;left:0;right:0;top:12px;height:72px;display:flex;align-items:center;justify-content:center;z-index:120;pointer-events:auto}
-    .nav-inner{width:100%;max-width:1200px;padding:6px 20px;background:linear-gradient(180deg, rgba(255,255,255,0.6), rgba(255,255,255,0.35));backdrop-filter:blur(10px);border-radius:14px;display:flex;align-items:center;justify-content:space-between;box-shadow:0 8px 30px rgba(11,102,208,0.06);border:1px solid rgba(11,102,208,0.06)}
-    .brand{display:flex;align-items:center;gap:14px}
-    .logo-wrap{width:56px;height:56px;border-radius:12px;overflow:hidden;background:var(--shine);display:flex;align-items:center;justify-content:center;box-shadow:0 8px 30px rgba(11,102,208,0.08)}
-    .logo-wrap img{width:100%;height:100%;object-fit:cover;display:block}
-    .brand-title{font-weight:900;color:var(--deep);font-size:1rem;letter-spacing:0.2px}
-    .nav-links{display:flex;gap:10px;align-items:center}
-    .nav-links a{padding:8px 12px;border-radius:10px;font-weight:700;color:var(--muted);transition:all .18s}
-    .nav-links a:hover,.nav-links a.active{background:var(--shine);color:#fff;box-shadow:0 12px 40px rgba(11,102,208,0.08)}
-    .mobile-toggle{display:none;background:transparent;border:0;font-size:22px;color:var(--primary);cursor:pointer}
+    /* NAV */
+    .navbar{position:fixed;top:0;left:0;right:0;background:rgba(255,255,255,0.95);backdrop-filter:blur(8px);border-bottom:1px solid rgba(14,165,233,0.06);z-index:1000;transition:all .25s; padding:0.9rem 0}
+    .navbar.scrolled{box-shadow:0 8px 30px rgba(2,6,23,0.06)}
+    .nav-container{max-width:1200px;margin:0 auto;padding:0 1.6rem;display:flex;align-items:center;justify-content:space-between;gap:12px}
+    .logo{display:flex;align-items:center;gap:.75rem;text-decoration:none;color:var(--primary);font-weight:800}
+    .logo-icon{width:44px;height:44px;border-radius:10px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.1rem;box-shadow:0 8px 30px rgba(14,165,233,0.16)}
+    .nav-menu{display:flex;gap:1.2rem;list-style:none;align-items:center}
+    .nav-link{color:var(--muted);font-weight:600;text-decoration:none;padding:.45rem .7rem;border-radius:10px}
+    .nav-link:hover{color:var(--primary)}
+    .mobile-menu-btn{display:none;background:none;border:0;color:var(--primary);font-size:1.25rem}
 
     /* Hero */
-    header.hero{min-height:92vh;padding:120px 20px 80px;display:grid;grid-template-columns:1fr 420px;gap:28px;align-items:center;position:relative;overflow:visible}
-    .hero-left{max-width:760px}
-    .kicker{display:inline-block;padding:6px 14px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--primary));color:#fff;font-weight:800;margin-bottom:16px;box-shadow:0 12px 36px rgba(38,208,206,0.08)}
-    .hero h1{font-size:3.1rem;line-height:1.02;margin:12px 0;color:var(--deep);font-weight:900;letter-spacing:-0.6px}
-    .hero p.lead{font-size:1.05rem;color:var(--muted);max-width:68ch;font-weight:600;margin-top:10px}
-    .cta{margin-top:24px;display:flex;gap:12px;flex-wrap:wrap}
-    .btn{padding:14px 18px;border-radius:12px;font-weight:800;border:0;cursor:pointer;display:inline-flex;align-items:center;gap:10px;transition:transform .18s,box-shadow .18s}
-    .btn-primary{background:var(--shine);color:#fff;box-shadow:0 24px 60px rgba(11,102,208,0.08)}
-    .btn-ghost{background:transparent;border:1px solid rgba(11,102,208,0.08);color:var(--primary)}
+    .hero{padding:8.5rem 0 6rem;background:linear-gradient(135deg,#0ea5e9 0%,#06b6d4 50%,#0891b2 100%);color:#fff;position:relative;overflow:hidden}
+    .hero::before{content:'';position:absolute;inset:0;background:url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><defs><pattern id="dots" width="20" height="20" patternUnits="userSpaceOnUse"><circle cx="10" cy="10" r="1.4" fill="white" opacity="0.12"/></pattern></defs><rect width="100" height="100" fill="url(%23dots)"/></svg>');opacity:.28}
+    .hero-container{position:relative;z-index:2;max-width:1200px;margin:0 auto;padding:0 1.6rem;text-align:center}
+    .hero-badge{display:inline-block;background:rgba(255,255,255,0.12);padding:.45rem 1.25rem;border-radius:999px;font-weight:700;margin-bottom:1.25rem;backdrop-filter:blur(6px);border:1px solid rgba(255,255,255,0.12)}
+    .hero-title{font-size:3.6rem;line-height:1.02;font-weight:900;margin:.6rem 0;text-shadow:0 6px 24px rgba(2,6,23,0.18)}
+    .hero-subtitle{font-size:1.15rem;max-width:900px;margin:0 auto 2.25rem;opacity:.95;font-weight:500}
+    .hero-buttons{display:flex;gap:1rem;justify-content:center;flex-wrap:wrap}
+    .btn{padding:.95rem 1.6rem;border-radius:12px;font-weight:800;cursor:pointer;text-decoration:none;display:inline-flex;align-items:center;gap:.5rem}
+    .btn-primary{background:linear-gradient(135deg,var(--primary),var(--accent));color:#fff;box-shadow:0 14px 50px rgba(2,6,23,0.12)}
+    .btn-secondary{background:rgba(255,255,255,0.12);color:#fff;border:1px solid rgba(255,255,255,0.16);backdrop-filter:blur(6px)}
 
-    /* Hero visual */
-    .hero-card{background:linear-gradient(180deg,#ffffff,#f6fbff);padding:24px;border-radius:18px;box-shadow:0 40px 140px rgba(11,102,208,0.06);border:1px solid rgba(11,102,208,0.05);transform:translateZ(0)}
-    .hero-stats{display:grid;grid-template-columns:1fr 1fr;gap:12px}
-    .stat{padding:16px;border-radius:12px;background:rgba(255,255,255,0.9);text-align:center;font-weight:800;color:var(--primary);box-shadow:inset 0 -6px 20px rgba(0,0,0,0.03)}
-    .stat .n{font-size:1.6rem}
+    /* Sections & utilities */
+    .section{padding:5.5rem 0}
+    .container{max-width:1100px;margin:0 auto;padding:0 1.6rem}
+    .section-header{text-align:center;margin-bottom:2.5rem}
+    .section-title{font-size:2.2rem;color:var(--primary);font-weight:900}
+    .section-subtitle{color:var(--muted);max-width:800px;margin:0 auto}
 
-    /* Decorative / Futuristic shapes */
-    .bg-orb{position:absolute;right:-80px;top:-40px;width:480px;height:480px;border-radius:50%;background:radial-gradient(circle at 30% 30%, rgba(38,208,206,0.18), transparent 30%);filter:blur(36px);pointer-events:none;z-index:0}
-    .bg-wave{position:absolute;left:-120px;bottom:-120px;width:800px;height:400px;background:linear-gradient(90deg, rgba(11,102,208,0.06), rgba(38,208,206,0.04));transform:skewX(-12deg);filter:blur(22px);pointer-events:none;z-index:0}
+    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:2rem;align-items:start}
+    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:1.2rem}
+    .card{background:#fff;padding:1.6rem;border-radius:14px;box-shadow:0 10px 40px rgba(2,6,23,0.05);color:var(--deep)}
+    .card h3{color:var(--primary);margin-bottom:.6rem}
 
-    /* Sections */
-    section{padding:72px 20px}
-    .container{max-width:1100px;margin:0 auto;position:relative;z-index:2}
-    .section-header{text-align:center;margin-bottom:34px}
-    .section-title{font-size:1.4rem;color:var(--deep);font-weight:900}
-    .section-sub{color:var(--muted);max-width:820px;margin:12px auto 0;font-weight:600}
+    /* About stats */
+    .about-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:1rem;margin-top:1rem}
+    .stat-item{background:#fff;padding:1.2rem;border-radius:12px;text-align:center;box-shadow:0 8px 30px rgba(2,6,23,0.04)}
+    .stat-number{font-size:1.6rem;font-weight:900;color:var(--primary);margin-bottom:.35rem}
+    .stat-label{color:var(--muted);font-weight:600}
 
-    /* grids */
-    .grid-2{display:grid;grid-template-columns:1fr 1fr;gap:20px}
-    .grid-3{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
+    /* Vision / mission */
+    .vision-mission-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem;margin-top:1.75rem}
+    .vm-card{background:#fff;padding:1.6rem;border-radius:14px;box-shadow:0 12px 40px rgba(2,6,23,0.05);border-top:5px solid var(--primary)}
+    .vm-icon{width:48px;height:48px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;margin-bottom:.75rem}
 
-    /* cards */
-    .card{background:linear-gradient(180deg,#fff,#fbfeff);padding:20px;border-radius:14px;box-shadow:0 20px 80px rgba(11,102,208,0.04);border:1px solid rgba(11,102,208,0.04)}
-    .card h3{color:var(--primary);margin-bottom:8px;font-weight:800}
-    .small{color:var(--muted);font-size:.95rem}
+    /* Values */
+    .values-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(240px,1fr));gap:1rem}
+    .value-card{background:#fff;padding:1.25rem;border-radius:12px;box-shadow:0 8px 30px rgba(2,6,23,0.04);cursor:pointer;transition:transform .22s}
+    .value-card:hover{transform:translateY(-8px)}
 
-    /* services */
-    .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .service{padding:20px;border-radius:12px;background:linear-gradient(180deg,#fff,#f7fdff);border:1px solid rgba(11,102,208,0.04);transition:transform .28s,box-shadow .28s}
-    .service:hover{transform:translateY(-10px);box-shadow:0 40px 120px rgba(11,102,208,0.08)}
-    .service .icon{width:64px;height:64px;border-radius:12px;background:var(--shine);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:22px;margin-bottom:12px}
+    /* Services */
+    .services-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(300px,1fr));gap:1.25rem}
+    .service-card{background:#fff;padding:1.25rem;border-radius:14px;box-shadow:0 10px 40px rgba(2,6,23,0.04);border-top:6px solid var(--primary)}
+    .service-list{list-style:none;padding-left:0;margin-top:1rem}
+    .service-list li{padding:.4rem 0;position:relative;padding-left:1.6rem;color:var(--muted)}
+    .service-list li::before{content:'✓';position:absolute;left:0;color:#10b981;font-weight:700}
 
-    /* team */
-    .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .team-card{background:linear-gradient(180deg,#fff,#fbfeff);padding:18px;border-radius:14px;text-align:center;box-shadow:0 18px 60px rgba(11,102,208,0.04);transition:transform .28s}
-    .team-card:hover{transform:translateY(-10px)}
-    .team-avatar{width:140px;height:140px;border-radius:999px;margin:0 auto 12px;overflow:hidden;border:6px solid #fff;box-shadow:0 18px 40px rgba(11,102,208,0.06)}
-    .team-name{font-weight:900;color:var(--deep)}
-    .team-role{color:var(--muted);font-weight:700;margin-top:6px}
+    /* Team */
+    .team-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(260px,1fr));gap:1rem}
+    .team-card{background:#fff;padding:1.6rem;border-radius:14px;text-align:center;box-shadow:0 10px 35px rgba(2,6,23,0.04);cursor:pointer}
+    .team-avatar{width:96px;height:96px;border-radius:999px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-size:1.6rem;margin:0 auto 1rem;overflow:hidden}
+    .team-name{font-weight:800;color:var(--deep)}
+    .team-role{color:var(--muted);margin-top:.35rem;font-weight:600}
 
-    /* gallery */
-    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-    .gallery-item{position:relative;border-radius:12px;overflow:hidden;cursor:pointer}
-    .gallery-caption{position:absolute;left:12px;bottom:12px;background:rgba(6,50,77,0.9);color:#fff;padding:8px 10px;border-radius:8px;font-weight:700}
+    /* Gallery */
+    .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+    .gallery-item{border-radius:12px;overflow:hidden;background:#fff;box-shadow:0 10px 30px rgba(2,6,23,0.04);cursor:pointer}
+    .gallery-caption{position:absolute;left:12px;bottom:12px;background:rgba(6,50,77,0.9);color:#fff;padding:8px 10px;border-radius:8px}
 
-    /* contact */
-    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
-    .form-input{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(6,50,77,0.06);background:transparent;color:var(--muted);outline:none}
-    .form-input:focus{box-shadow:0 14px 60px rgba(38,208,206,0.06);border-color:rgba(11,102,208,0.12)}
+    /* Contact */
+    .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.25rem}
+    .contact-item{background:rgba(255,255,255,0.06);padding:1rem;border-radius:10px;color:#fff;backdrop-filter:blur(6px);cursor:pointer}
+    .contact-form{background:rgba(255,255,255,0.06);padding:1rem;border-radius:12px;color:#fff;backdrop-filter:blur(6px)}
 
-    /* footer */
-    footer{padding:36px 20px;text-align:center;color:var(--muted)}
+    .form-input{width:100%;padding:.85rem;border-radius:10px;border:1px solid rgba(255,255,255,0.12);background:transparent;color:#fff;margin-top:.6rem}
+
+    /* Footer */
+    .footer{background:var(--deep);color:#fff;padding:2.25rem 0;text-align:center;margin-top:2rem}
+    .footer small{opacity:.9}
+
+    /* utilities */
+    .fade-in{opacity:0;transform:translateY(18px);transition:all .6s}
+    .fade-in.visible{opacity:1;transform:none}
 
     /* responsive */
-    @media (max-width:1100px){ .hero{grid-template-columns:1fr} .nav-inner{padding:8px} .services-grid{grid-template-columns:repeat(2,1fr)} .team-grid{grid-template-columns:repeat(2,1fr)} }
-    @media (max-width:720px){
-      .nav-links{display:none} .mobile-toggle{display:block}
-      .services-grid{grid-template-columns:1fr} .team-grid{grid-template-columns:1fr}
-      .contact-grid{grid-template-columns:1fr}
+    @media (max-width:900px){
+      .grid-2{grid-template-columns:1fr}
+      .vision-mission-grid{grid-template-columns:1fr}
+      .about-stats{grid-template-columns:repeat(2,1fr)}
+      .nav-menu{display:none}
+      .mobile-menu-btn{display:block}
+      .hero-title{font-size:2.2rem}
     }
-
-    /* micro interactions */
-    .reveal{opacity:0;transform:translateY(12px) scale(.995);transition:all .6s cubic-bezier(.2,.9,.2,1)}
-    .reveal.show{opacity:1;transform:none}
-    .glow{animation:glow 3.2s ease-in-out infinite alternate}
-    @keyframes glow{from{filter:drop-shadow(0 6px 10px rgba(38,208,206,0.06))}to{filter:drop-shadow(0 20px 48px rgba(11,102,208,0.08))}}
   </style>
 </head>
 <body>
-  <nav class="navbar" aria-label="Primary navigation">
-    <div class="nav-inner container">
-      <a href="#home" class="brand" aria-label="Unfold Solutions home">
-        <div class="logo-wrap" title="Unfold Solutions">
-          <img id="logoImg" src="assets/gallery/unfold.jpg" alt="Unfold Solutions logo"
-               onerror="this.onerror=null;this.src='data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2064%2064%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20rx%3D%2212%22%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%230b66d0%22/%3E%3Cg%20transform%3D%22translate(10%2C12)%22%20fill%3D%22%23fff%22%3E%3Cpath%20d%3D%22M22%202c6%200%2011%205%2011%2011s-5%2011-11%2011S11%2019%2011%2013%2016%202%2022%202z%22/%3E%3Cpath%20d%3D%22M4%2034c6%200%2011-5%2013-11%202%206%207%2011%2013%2011v5H4v-5z%22%20opacity%3D%220.95%22/%3E%3C/g%3E%3C/svg%3E';" style="width:56px;height:56px;object-fit:cover;">
-        </div>
-        <div class="brand-title">Unfold Solutions</div>
+  <!-- Navigation -->
+  <nav id="navbar" class="navbar" aria-label="Primary navigation">
+    <div class="nav-container">
+      <a href="#home" class="logo" aria-label="Unfold Solutions home">
+        <div class="logo-icon">📈</div>
+        <div>UNFOLD SOLUTIONS</div>
       </a>
 
-      <div style="display:flex;align-items:center;gap:18px">
-        <div class="nav-links" id="navLinks" role="navigation" aria-label="Primary links">
-          <a href="#home" class="nav-link active">Home</a>
-          <a href="#about" class="nav-link">About</a>
-          <a href="#services" class="nav-link">Services</a>
-          <a href="#team" class="nav-link">Team</a>
-          <a href="#gallery" class="nav-link">Gallery</a>
-          <a href="#contact" class="nav-link">Contact</a>
-        </div>
+      <ul class="nav-menu" role="navigation" aria-label="Primary links">
+        <li><a class="nav-link" href="#home">Home</a></li>
+        <li><a class="nav-link" href="#about">About</a></li>
+        <li><a class="nav-link" href="#vision">Vision</a></li>
+        <li><a class="nav-link" href="#values">Values</a></li>
+        <li><a class="nav-link" href="#services">Services</a></li>
+        <li><a class="nav-link" href="#team">Team</a></li>
+        <li><a class="nav-link" href="#contact">Contact</a></li>
+      </ul>
 
-        <button id="mobileToggle" class="mobile-toggle" aria-label="Open menu">☰</button>
-      </div>
+      <button class="mobile-menu-btn" aria-label="Open menu">☰</button>
     </div>
   </nav>
 
-  <header id="home" class="hero" aria-labelledby="heroTitle">
-    <div class="bg-orb glow" aria-hidden="true"></div>
-    <div class="bg-wave" aria-hidden="true"></div>
-
-    <div class="hero-left container">
-      <div class="kicker">People • Product • Impact</div>
-      <h1 id="heroTitle">Unfolding potentials, nurturing growth</h1>
-      <p class="lead">At Unfold Solutions, we create lasting impact by nurturing a culture of excellence and building organizations that thrive through continuous learning. We blend strategy, learning, and digital systems to help teams innovate and scale.</p>
-
-      <div class="cta">
-        <a class="btn btn-primary" href="#services">Explore Services</a>
-        <a class="btn btn-ghost" href="#contact">Request Consultation</a>
-      </div>
-
-      <div style="margin-top:20px;display:flex;gap:12px;align-items:center;color:var(--muted)">
-        <div style="display:flex;gap:12px;align-items:center">
-          <div style="width:48px;height:48px;border-radius:10px;background:var(--shine);display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800">✓</div>
-          <div>
-            <div style="font-weight:800;color:var(--deep)">Founded</div>
-            <div class="small">October 2025 — Unfold Business Solutions</div>
-          </div>
-        </div>
+  <!-- Hero -->
+  <section id="home" class="hero" aria-labelledby="hero-title">
+    <div class="hero-container container">
+      <div class="hero-badge">OCTOBER 2025</div>
+      <h1 id="hero-title" class="hero-title">Unfolding Potentials, Nurturing Growth</h1>
+      <p id="hero-subtitle" class="hero-subtitle">At Unfold Solutions, we focus on creating a lasting impact by nurturing a culture of excellence and building organizations that thrive through continuous learning.</p>
+      <div class="hero-buttons">
+        <a class="btn btn-primary" href="#services">Explore Our Services</a>
+        <a class="btn btn-secondary" href="#contact">Get In Touch</a>
       </div>
     </div>
-
-    <aside class="hero-card" aria-hidden="true">
-      <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <div style="font-weight:900;color:var(--primary)">Company Snapshot</div>
-        <div class="small">Profile</div>
-      </div>
-
-      <div class="hero-stats">
-        <div class="stat"><div class="n" data-count="02">02</div><div class="small">Offices</div></div>
-        <div class="stat"><div class="n" data-count="120">120+</div><div class="small">Projects</div></div>
-      </div>
-
-      <div style="margin-top:12px;color:var(--muted);font-size:.95rem">Vision: To be the principal partner in organizational growth, innovation and excellence through continuous improvement.</div>
-    </aside>
-  </header>
+  </section>
 
   <main>
-    <!-- ABOUT / PROFILE -->
-    <section id="about" class="reveal">
+    <!-- About -->
+    <section id="about" class="section about">
       <div class="container">
-        <div class="section-header">
-          <div class="section-title">Company Profile</div>
-          <div class="section-sub">"Unfolding potentials, nurturing growth" — practical, people-centered solutions that build capability and unlock organizational potential.</div>
+        <div class="section-header fade-in">
+          <h2 class="section-title">About Unfold Solutions</h2>
+          <p class="section-subtitle">We deliver strategic support tailored to organizational and individual contexts, empowering growth and driving innovation.</p>
         </div>
 
-        <div class="grid-2">
-          <div class="card">
-            <h3>Unfold Business Solutions</h3>
-            <p class="small">At Unfold Solutions we focus on creating lasting impact by nurturing a culture of excellence and building organizations that thrive through continuous learning. We empower teams with practical programs, data-driven systems, and mentoring that scales.</p>
-
-            <h4 style="margin-top:14px;color:var(--accent);font-weight:800">Philosophy</h4>
-            <p class="small">"Visualize your ultimate goal, take bold action, and watch success unfold."</p>
-
-            <ul style="margin-top:12px;color:var(--muted);line-height:1.7">
-              <li><strong>Address:</strong> 22 Quality Bldg, Addis Ababa</li>
-              <li><strong>Email:</strong> unfoldbusinesssolutions@gmail.com</li>
-              <li><strong>Phone:</strong> +251 910 832 473 · +251 970 188 735</li>
-            </ul>
-          </div>
-
-          <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
+        <div class="grid-2 fade-in">
+          <div>
             <div class="card">
-              <h3>Vision</h3>
-              <p class="small">To be the principal partner in organizational growth, innovation, and excellence through fostering a culture of continuous improvement.</p>
-            </div>
-            <div class="card">
-              <h3>Mission</h3>
-              <p class="small">Empowering organizations to grow and excel through innovation, continuous improvement, and future-ready strategies.</p>
+              <h3>Unfold Business Solutions</h3>
+              <p>At Unfold Solutions we focus on creating a lasting impact by nurturing a culture of excellence and building organizations that thrive through continuous learning. We empower teams with practical programs, data-driven systems, and mentoring that scales.</p>
+
+              <h4 style="margin-top:1rem;color:var(--primary)">Philosophy</h4>
+              <p style="color:var(--muted)"><em>"Visualize your ultimate goal, take bold action, and watch success unfold."</em></p>
+
+              <ul style="margin-top:1rem;color:var(--muted);line-height:1.6">
+                <li><strong>Address:</strong> 22 Quality Bldg, Addis Ababa</li>
+                <li><strong>Email:</strong> unfoldbusinesssolutions@gmail.com</li>
+                <li><strong>Phones:</strong> +251 910 832 473 · +251 970 188 735</li>
+              </ul>
             </div>
           </div>
+
+          <div>
+            <div class="vision-mission-grid">
+              <div class="vm-card">
+                <div class="vm-icon">🎯</div>
+                <h4 style="margin:0;color:var(--primary)">Vision</h4>
+                <p style="margin-top:.6rem;color:var(--muted)">To be the principal partner in organizational growth, innovation, and excellence through fostering a culture of continuous improvement.</p>
+              </div>
+              <div class="vm-card">
+                <div class="vm-icon">🚀</div>
+                <h4 style="margin:0;color:var(--primary)">Mission</h4>
+                <p style="margin-top:.6rem;color:var(--muted)">Empowering organizations to grow and excel through innovation, continuous improvement, and future-ready strategies.</p>
+              </div>
+            </div>
+
+            <div style="margin-top:1rem" class="card">
+              <h3>Emphasis</h3>
+              <p style="color:var(--muted)">Capacity development, youth & women empowerment, and digitalization for inclusive impact.</p>
+            </div>
+          </div>
         </div>
 
-        <div style="margin-top:18px" class="grid-3">
-          <div class="card">
-            <h3>Core Values</h3>
-            <ul class="small" style="margin-top:8px;line-height:1.6">
-              <li><strong>Empowerment</strong> — enabling people & organizations to lead transformation.</li>
-              <li><strong>Integrity</strong> — honesty, accountability and ethics.</li>
-              <li><strong>Collaboration</strong> — trust, listening and co-creation.</li>
+        <div class="about-stats" aria-hidden="true">
+          <div class="stat-item"><div class="stat-number">02</div><div class="stat-label">Offices</div></div>
+          <div class="stat-item"><div class="stat-number">120+</div><div class="stat-label">Projects</div></div>
+          <div class="stat-item"><div class="stat-number">42</div><div class="stat-label">Partners</div></div>
+          <div class="stat-item"><div class="stat-number">2016+</div><div class="stat-label">Years Experience</div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Values -->
+    <section id="vision" class="section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Vision & Mission</h2>
+          <p class="section-subtitle">Our guiding principles that drive everything we do</p>
+        </div>
+        <div class="vision-mission-grid fade-in">
+          <div class="vm-card">
+            <div class="vm-icon">🎯</div>
+            <h4 style="margin:0;color:var(--primary)">Vision</h4>
+            <p style="margin-top:.6rem;color:var(--muted)">To be the principal partner in organizational growth, innovation, and excellence through fostering a culture of continuous improvement.</p>
+          </div>
+          <div class="vm-card">
+            <div class="vm-icon">🚀</div>
+            <h4 style="margin:0;color:var(--primary)">Mission</h4>
+            <p style="margin-top:.6rem;color:var(--muted)">Empowering organizations to grow and excel through innovation, continuous improvement, and future-ready strategies.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="values" class="section values">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Core Values</h2>
+          <p class="section-subtitle">Principles that guide our work and relationships</p>
+        </div>
+
+        <div class="values-grid fade-in">
+          <div class="value-card">
+            <div class="vm-icon">💪</div>
+            <h4 class="value-title">Empowerment</h4>
+            <p class="value-text">We create environments where individuals and organizations can unlock their potential and lead their own transformation.</p>
+          </div>
+          <div class="value-card">
+            <div class="vm-icon">🛡️</div>
+            <h4 class="value-title">Integrity</h4>
+            <p class="value-text">We lead with honesty, accountability, and ethical responsibility in every interaction and decision we make.</p>
+          </div>
+          <div class="value-card">
+            <div class="vm-icon">🤝</div>
+            <h4 class="value-title">Collaboration</h4>
+            <p class="value-text">We believe that shared success is built through trust, listening, and co-creation with our clients and communities.</p>
+          </div>
+          <div class="value-card">
+            <div class="vm-icon">💡</div>
+            <h4 class="value-title">Innovation</h4>
+            <p class="value-text">We embrace bold thinking and leverage modern tools to co-create practical and future-ready solutions.</p>
+          </div>
+          <div class="value-card">
+            <div class="vm-icon">🌍</div>
+            <h4 class="value-title">Accessibility</h4>
+            <p class="value-text">We design inclusive solutions responsive to diverse needs, voices and lived experiences.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Services -->
+    <section id="services" class="section">
+      <div class="container">
+        <div class="section-header fade-in">
+          <h2 class="section-title">Our Service Pillars</h2>
+          <p class="section-subtitle">Comprehensive solutions designed to empower growth and drive innovation</p>
+        </div>
+
+        <div class="services-grid fade-in">
+          <div class="service-card">
+            <div class="vm-icon">📚</div>
+            <h3 class="service-title">Learning & Development</h3>
+            <p class="service-description">We design practical, people-centered learning experiences that build individual skills and institutional capacity.</p>
+            <ul class="service-list">
+              <li>Learning Strategy Development</li>
+              <li>Curriculum & Content Development</li>
+              <li>LMS Management</li>
+              <li>Training Facilitation & ToT</li>
+              <li>Mentorship & Coaching</li>
+              <li>L&D Monitoring & Evaluation</li>
             </ul>
           </div>
-          <div class="card">
-            <h3>Principles</h3>
-            <p class="small">Innovation with purpose, accessibility and human-centred design guide our work.</p>
-          </div>
-          <div class="card">
-            <h3>Emphasis</h3>
-            <p class="small">Capacity development, youth & women empowerment, and digitalization for inclusive impact.</p>
-          </div>
-        </div>
-      </div>
-    </section>
 
-    <!-- SERVICES -->
-    <section id="services" class="reveal">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-title">Service Pillars</div>
-          <div class="section-sub">Integrated offerings to unlock capability and deliver measurable results.</div>
-        </div>
-
-        <div class="services-grid">
-          <div class="service">
-            <div class="icon">🎓</div>
-            <h4>Learning & Development</h4>
-            <p class="small">Learning strategy, curriculum & content development, LMS management, facilitation & ToT, mentorship, and L&D M&E.</p>
-          </div>
-
-          <div class="service">
-            <div class="icon">🧭</div>
-            <h4>Consulting & Advisory</h4>
-            <p class="small">Business and organizational strategy, HR, organizational development, ICT strategy, data management and analytics.</p>
-          </div>
-
-          <div class="service">
-            <div class="icon">⚙️</div>
-            <h4>Project & Program Management</h4>
-            <p class="small">End-to-end program delivery, ERP and software implementation support, cloud & BI solutions and technical operations.</p>
-          </div>
-        </div>
-
-        <div style="margin-top:18px;display:grid;grid-template-columns:1fr 1fr;gap:12px">
-          <div class="card">
-            <h3>What we offer</h3>
-            <ul class="small" style="margin-top:8px;line-height:1.6">
-              <li>Learning strategy, LMS & facilitation</li>
-              <li>Business strategy, ICT & data solutions</li>
-              <li>Project management & implementation support</li>
+          <div class="service-card">
+            <div class="vm-icon">💼</div>
+            <h3 class="service-title">Consulting & Advisory</h3>
+            <p class="service-description">We work alongside organizations to solve complex problems with clarity and evidence-based insight.</p>
+            <ul class="service-list">
+              <li>Business Strategy</li>
+              <li>Project Management</li>
+              <li>Human Resources</li>
+              <li>Organizational Development</li>
+              <li>ICT Strategy & Policy</li>
+              <li>Data Management & Analytics</li>
             </ul>
           </div>
-          <div class="card">
-            <h3>Approach</h3>
-            <p class="small">Research → Prototype → Build → Transfer → Scale. Collaborative co-creation, measurable KPIs, and capacity transfer are central.</p>
+
+          <div class="service-card">
+            <div class="vm-icon">🎯</div>
+            <h3 class="service-title">Project & Program Management</h3>
+            <p class="service-description">End-to-end support for initiatives that deliver impact on time and within budget.</p>
+            <ul class="service-list">
+              <li>Capacity Development</li>
+              <li>Youth & Women Empowerment</li>
+              <li>Digitalization & ERP</li>
+              <li>Monitoring & Evaluation</li>
+              <li>Stakeholder Engagement</li>
+            </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- WHY CHOOSE US -->
-    <section id="why" class="reveal">
+    <!-- Team -->
+    <section id="team" class="section team">
       <div class="container">
-        <div class="section-header">
-          <div class="section-title">Why Choose Unfold</div>
-          <div class="section-sub">People-centered, evidence-led, and tailored to deliver measurable impact.</div>
+        <div class="section-header fade-in">
+          <h2 class="section-title">Our Team</h2>
+          <p class="section-subtitle">Experienced • Purpose-Driven • Committed to Impact</p>
         </div>
 
-        <div class="grid-3">
-          <div class="card">
-            <h3>Proven Expertise</h3>
-            <p class="small">Deep experience across learning, strategy and digital systems with measurable outcomes.</p>
-          </div>
-          <div class="card">
-            <h3>Customized Solutions</h3>
-            <p class="small">Tailored to your context and goals — no one-size-fits-all solutions.</p>
-          </div>
-          <div class="card">
-            <h3>Collaboration & Values</h3>
-            <p class="small">Co-creation, integrity and people-centered design underpin delivery.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- TEAM -->
-    <section id="team" class="reveal">
-      <div class="container">
-        <div class="section-header">
-          <div class="section-title">Our Team</div>
-          <div class="section-sub">Experienced, purpose-driven professionals committed to impact.</div>
-        </div>
-
-        <div class="team-grid" id="teamGrid">
-          <div class="team-card" data-name="Mekonnen Mengesha" data-role="Head of Organizational Learning & Growth" data-bio="15+ years designing learning programs, training thousands and building sustainable capacity in public and NGO sectors." data-src="assets/team/mekonnen.jpg" tabindex="0">
-            <div class="team-avatar"><img alt="Mekonnen Mengesha" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%230b66d0'/%3E%3Ctext%20x='50%25'%20y='52%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23fff'%20font-size='96'%3EMM%3C/text%3E%3C/svg%3E"></div>
+        <div class="team-grid fade-in">
+          <div class="team-card" data-name="Mekonnen Mengesha">
+            <div class="team-avatar"><img src="assets/team/mekonnen.jpg" alt="Mekonnen" style="width:100%;height:100%;object-fit:cover"></div>
             <div class="team-name">Mekonnen Mengesha</div>
             <div class="team-role">Head of Organizational Learning & Growth</div>
           </div>
-
-          <div class="team-card" data-name="Chere Lemma" data-role="Head of Technology & Process Optimization" data-bio="Systems architect focused on human-centred processes and resilient platforms." data-src="assets/team/chere.jpg" tabindex="0">
-            <div class="team-avatar"><img alt="Chere Lemma" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%230b66d0'/%3E%3Ctext%20x='50%25'%20y='52%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23fff'%20font-size='96'%3ECL%3C/text%3E%3C/svg%3E"></div>
+          <div class="team-card" data-name="Chere Lemma">
+            <div class="team-avatar"><img src="assets/team/chere.jpg" alt="Chere" style="width:100%;height:100%;object-fit:cover"></div>
             <div class="team-name">Chere Lemma</div>
             <div class="team-role">Head of Technology & Process Optimization</div>
           </div>
-
-          <div class="team-card" data-name="Dawit Teshome" data-role="Head of Business Innovation & Consultancy" data-bio="Product and business strategist delivering growth-oriented initiatives and partnerships." data-src="assets/team/dawit.jpg" tabindex="0">
-            <div class="team-avatar"><img alt="Dawit Teshome" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%23ffd67a'/%3E%3Ctext%20x='50%25'%20y='52%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23061a21'%20font-size='96'%3EDT%3C/text%3E%3C/svg%3E"></div>
+          <div class="team-card" data-name="Dawit Teshome">
+            <div class="team-avatar"><img src="assets/team/dawit.jpg" alt="Dawit" style="width:100%;height:100%;object-fit:cover"></div>
             <div class="team-name">Dawit Teshome</div>
             <div class="team-role">Head of Business Innovation & Consultancy</div>
           </div>
@@ -335,213 +344,123 @@
       </div>
     </section>
 
-    <!-- GALLERY -->
-    <section id="gallery" class="reveal">
+    <!-- Gallery -->
+    <section id="gallery" class="section">
       <div class="container">
-        <div class="section-header">
-          <div class="section-title">Project Gallery</div>
-          <div class="section-sub">Curated images showing our work and impact — click to enlarge.</div>
+        <div class="section-header fade-in">
+          <h2 class="section-title">Project Gallery</h2>
+          <p class="section-subtitle">Curated images showing our work and impact — click to enlarge.</p>
         </div>
 
-        <div class="gallery-grid" id="galleryGrid">
-          <div class="gallery-item card"><img src="assets/gallery/unfold.jpg" alt="Unfold overview" loading="lazy"><div class="gallery-caption">Unfold — Overview</div></div>
-          <div class="gallery-item card"><img src="assets/gallery/project-1.png" alt="Workshop — 2025" loading="lazy"><div class="gallery-caption">Workshop — 2025</div></div>
-          <div class="gallery-item card"><img src="assets/gallery/project-2.png" alt="Pilot Site" loading="lazy"><div class="gallery-caption">Pilot Site</div></div>
-          <div class="gallery-item card"><img src="assets/gallery/project-3.png" alt="Community Event" loading="lazy"><div class="gallery-caption">Community Event</div></div>
-        </div>
-
-        <div id="lightbox" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;background:rgba(6,50,77,0.85);z-index:1000;padding:20px">
-          <img id="lightboxImg" alt="" style="max-width:92%;max-height:86%;border-radius:12px;box-shadow:0 60px 200px rgba(6,50,77,0.7)">
+        <div class="gallery-grid fade-in">
+          <div class="gallery-item"><img src="assets/gallery/unfold.jpg" alt="Unfold overview" loading="lazy"></div>
+          <div class="gallery-item"><img src="assets/gallery/project-1.png" alt="Project 1" loading="lazy"></div>
+          <div class="gallery-item"><img src="assets/gallery/project-2.png" alt="Project 2" loading="lazy"></div>
+          <div class="gallery-item"><img src="assets/gallery/project-3.png" alt="Project 3" loading="lazy"></div>
         </div>
       </div>
     </section>
 
-    <!-- CONTACT -->
-    <section id="contact" class="reveal">
+    <!-- Contact -->
+    <section id="contact" class="section contact">
       <div class="container">
-        <div class="section-header">
-          <div class="section-title">Contact Us</div>
-          <div class="section-sub">Let's discuss how we can help bring your vision to life.</div>
+        <div class="section-header fade-in">
+          <h2 class="section-title" style="color:#fff">We Are Ready To Assist You</h2>
+          <p class="section-subtitle" style="color:rgba(255,255,255,0.9)">Let's discuss how we can help bring your vision to life</p>
         </div>
 
-        <div class="contact-grid">
-          <div class="card">
-            <h3>Get in touch</h3>
-            <div style="display:grid;gap:12px;margin-top:10px">
-              <div style="display:flex;gap:12px;align-items:center">
-                <div style="width:44px;height:44px;border-radius:10px;background:var(--shine);display:flex;align-items:center;justify-content:center;color:#fff">✉️</div>
-                <div><strong>Email</strong><div class="small">unfoldbusinesssolutions@gmail.com</div></div>
+        <div class="contact-grid fade-in">
+          <div>
+            <div class="contact-item">
+              <strong>Email</strong>
+              <div style="margin-top:.5rem;color:#fff">unfoldbusinesssolutions@gmail.com</div>
+            </div>
+            <div style="height:12px"></div>
+            <div style="display:grid;grid-template-columns:1fr 1fr;gap:.8rem">
+              <div class="contact-item">
+                <strong>Primary Phone</strong>
+                <div style="margin-top:.4rem;color:#fff">+251910832473</div>
               </div>
-
-              <div style="display:flex;gap:12px;align-items:center">
-                <div style="width:44px;height:44px;border-radius:10px;background:var(--deep);display:flex;align-items:center;justify-content:center;color:#fff">📞</div>
-                <div><strong>Phone</strong><div class="small">+251 910 832 473 · +251 970 188 735</div></div>
-              </div>
-
-              <div style="display:flex;gap:12px;align-items:center">
-                <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--primary),#88e8df);display:flex;align-items:center;justify-content:center;color:#fff">📍</div>
-                <div><strong>Address</strong><div class="small">22 Quality Bldg, Addis Ababa</div></div>
+              <div class="contact-item">
+                <strong>Secondary Phone</strong>
+                <div style="margin-top:.4rem;color:#fff">+251970188735</div>
               </div>
             </div>
-            <div style="margin-top:14px"><a class="btn btn-primary" href="mailto:unfoldbusinesssolutions@gmail.com">Email Us</a></div>
+            <div style="height:12px"></div>
+            <div class="contact-item">
+              <strong>Address</strong>
+              <div style="margin-top:.4rem;color:#fff">22 Quality Bldg, Addis Ababa</div>
+            </div>
           </div>
 
-          <div class="card">
-            <form id="contactForm" novalidate>
-              <input class="form-input" id="cname" name="name" placeholder="Full name" required>
-              <input class="form-input" id="cemail" name="email" type="email" placeholder="Email address" required style="margin-top:10px">
-              <input class="form-input" id="csubject" name="subject" placeholder="Subject" style="margin-top:10px">
-              <textarea id="cmessage" name="message" placeholder="Message" rows="6" class="form-input" style="margin-top:10px"></textarea>
-              <button type="submit" class="btn btn-primary" style="width:100%;margin-top:12px">Send Message</button>
-            </form>
+          <div>
+            <div class="contact-form">
+              <h3 style="color:#fff">Send Us A Message</h3>
+              <form id="contactForm">
+                <div style="margin-top:.6rem"><input class="form-input" id="name" name="name" placeholder="Full name" required></div>
+                <div style="margin-top:.6rem"><input class="form-input" id="email" name="email" type="email" placeholder="Email address" required></div>
+                <div style="margin-top:.6rem"><input class="form-input" id="subject" name="subject" placeholder="Subject"></div>
+                <div style="margin-top:.6rem"><textarea id="message" name="message" class="form-input" rows="6" placeholder="Tell us about your project..." required></textarea></div>
+                <div style="margin-top:.8rem"><button type="submit" class="btn btn-primary" style="width:100%">Send Message</button></div>
+              </form>
+            </div>
           </div>
         </div>
       </div>
     </section>
   </main>
 
-  <footer>
+  <footer class="footer">
     <div class="container">
-      <div style="font-weight:900;font-size:1.05rem;color:var(--deep)">Unfold Solutions</div>
-      <div style="opacity:.85;margin:8px 0;color:var(--muted)">© <span id="year"></span> Unfold Business Solutions — All rights reserved.</div>
-      <div class="small">Bringing ideas &amp; innovation to life through people-centered technology and learning</div>
+      <div style="font-weight:900;font-size:1.05rem">UNFOLD SOLUTIONS</div>
+      <small>Thank you for taking the time to learn about Unfold Business Solutions. We're excited about the opportunity to collaborate, co-create, and contribute to your growth journey.</small>
+      <div style="margin-top:1rem">© <span id="year"></span> Unfold Solutions. All rights reserved. | Bringing ideas & innovation to life through technology solutions</div>
     </div>
   </footer>
 
-  <!-- Modals & UI -->
-  <div id="teamModal" style="display:none;position:fixed;inset:0;align-items:center;justify-content:center;padding:20px;background:rgba(6,50,77,0.15);z-index:1100">
-    <div style="background:#fff;padding:18px;border-radius:12px;max-width:900px;width:100%;box-shadow:0 40px 140px rgba(11,102,208,0.06);display:grid;grid-template-columns:220px 1fr;gap:18px;align-items:center">
-      <div style="width:220px;height:220px;border-radius:12px;overflow:hidden"><img id="modalAvatar" src="" alt="" style="width:100%;height:100%;object-fit:cover"></div>
-      <div>
-        <h3 id="modalName" style="margin:0;color:var(--primary)"></h3>
-        <div id="modalRole" style="color:var(--muted);font-weight:700;margin-top:6px"></div>
-        <p id="modalBio" style="margin-top:12px;color:var(--muted)"></p>
-        <div style="margin-top:12px"><button id="modalClose" class="btn btn-ghost">Close</button></div>
-      </div>
-    </div>
-  </div>
-
-  <button id="backTop" title="Back to top" style="position:fixed;right:18px;bottom:18px;background:var(--shine);color:#fff;border-radius:12px;padding:12px 14px;cursor:pointer;display:none;z-index:400">↑</button>
-
   <script>
+    // Small interactive behaviors: scroll navbar, reveal, contact simulation
     (function(){
-      // mobile toggle
-      const mobileToggle = document.getElementById('mobileToggle');
-      const navLinks = document.getElementById('navLinks');
-      if(mobileToggle){
-        mobileToggle.addEventListener('click', ()=> {
-          if(navLinks.style.display === 'flex'){ navLinks.style.display = '' }
-          else {
-            navLinks.style.display = 'flex';
-            navLinks.style.flexDirection = 'column';
-            navLinks.style.position = 'absolute';
-            navLinks.style.right = '18px';
-            navLinks.style.top = '76px';
-            navLinks.style.padding = '12px';
-            navLinks.style.borderRadius = '12px';
-            navLinks.style.background = 'rgba(255,255,255,0.98)';
-            navLinks.style.boxShadow = '0 10px 30px rgba(11,102,208,0.06)';
-          }
-        });
-      }
-
-      // smooth scroll & scrollspy
-      const links = document.querySelectorAll('.nav-link');
-      function onScrollSpy(){
-        const fromTop = window.scrollY + 140;
-        links.forEach(link=>{
-          const section = document.querySelector(link.getAttribute('href'));
-          if(section && section.offsetTop <= fromTop && section.offsetTop + section.offsetHeight > fromTop){
-            links.forEach(l=>l.classList.remove('active'));
-            link.classList.add('active');
-          }
-        });
-      }
-      document.querySelectorAll('a[href^="#"]').forEach(a=>{
-        a.addEventListener('click', function(e){
-          const href = this.getAttribute('href');
-          const target = document.querySelector(href);
-          if(target){ e.preventDefault(); target.scrollIntoView({behavior:'smooth',block:'start'}); }
-        });
+      // navbar scroll effect
+      const navbar = document.getElementById('navbar');
+      window.addEventListener('scroll', ()=> {
+        if(window.scrollY > 80) navbar.classList.add('scrolled'); else navbar.classList.remove('scrolled');
       });
-      window.addEventListener('scroll', onScrollSpy);
-      onScrollSpy();
 
-      // contact form (simulated)
-      const cForm = document.getElementById('contactForm');
-      if(cForm){
-        cForm.addEventListener('submit', function(e){
+      // reveal on scroll
+      const obs = new IntersectionObserver((entries)=> {
+        entries.forEach(e=> { if(e.isIntersecting) e.target.classList.add('visible'); });
+      }, {threshold:0.12});
+      document.querySelectorAll('.fade-in').forEach(el => obs.observe(el));
+
+      // mobile menu (simple)
+      const mobileBtn = document.querySelector('.mobile-menu-btn');
+      const menu = document.querySelector('.nav-menu');
+      mobileBtn && mobileBtn.addEventListener('click', ()=> {
+        if(menu.style.display === 'flex') menu.style.display = ''; else menu.style.display = 'flex';
+      });
+
+      // contact form simulated submit
+      const form = document.getElementById('contactForm');
+      if(form){
+        form.addEventListener('submit', function(e){
           e.preventDefault();
           const btn = this.querySelector('button[type="submit"]');
           const prev = btn.textContent;
           btn.textContent = 'Sending...'; btn.disabled = true;
-          setTimeout(()=>{ btn.textContent = 'Sent ✓'; setTimeout(()=>{ btn.textContent = prev; btn.disabled=false; cForm.reset(); },1200); },900);
+          setTimeout(()=> {
+            btn.textContent = 'Message Sent ✓';
+            setTimeout(()=>{ btn.textContent = prev; btn.disabled = false; form.reset(); }, 1800);
+          },1200);
         });
       }
 
       // year
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      // reveal on scroll
-      const observer = new IntersectionObserver((entries)=>{
-        entries.forEach(entry=>{ if(entry.isIntersecting) entry.target.classList.add('show'); });
-      }, {threshold:0.12});
-      document.querySelectorAll('.reveal').forEach(el=>observer.observe(el));
-
-      // back to top
-      const backTop = document.getElementById('backTop');
-      window.addEventListener('scroll', ()=> { backTop.style.display = window.scrollY > 320 ? 'block':'none'; });
-      backTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
-
-      // counters
-      document.querySelectorAll('[data-count]').forEach(el=>{
-        const final = parseInt(el.getAttribute('data-count'),10) || 0;
-        let val = 0; const step = Math.max(1, Math.floor(final/30));
-        const id = setInterval(()=>{ val += step; if(val >= final){ el.textContent = final + (final>=100?'+':''); clearInterval(id); } else el.textContent = val; },30);
-      });
-
-      // gallery lightbox
-      const galleryImgs = Array.from(document.querySelectorAll('.gallery-item img'));
-      const lightbox = document.getElementById('lightbox');
-      const lightboxImg = document.getElementById('lightboxImg');
-      galleryImgs.forEach((img,i)=> img.addEventListener('click', ()=> {
-        if(lightbox){ lightbox.style.display='flex'; lightboxImg.src = img.src; lightboxImg.alt = img.alt||''; }
-      }));
-      if(lightbox){ lightbox.addEventListener('click', (e)=> { if(e.target!==lightboxImg){ lightbox.style.display='none'; lightboxImg.src=''; } }); }
-      document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ if(lightbox) lightbox.style.display='none'; if(document.getElementById('teamModal')) document.getElementById('teamModal').style.display='none'; } });
-
-      // team modal & image loading
-      const teamCards = Array.from(document.querySelectorAll('.team-card'));
-      const teamModal = document.getElementById('teamModal');
-      const modalAvatar = document.getElementById('modalAvatar');
-      const modalName = document.getElementById('modalName');
-      const modalRole = document.getElementById('modalRole');
-      const modalBio = document.getElementById('modalBio');
-      const modalClose = document.getElementById('modalClose');
-
-      function initials(name){ return (name||'').split(' ').map(s=>s[0]).slice(0,2).join('').toUpperCase(); }
-
-      teamCards.forEach(card=>{
-        const imgEl = card.querySelector('img');
-        const src = card.getAttribute('data-src');
-        const name = card.getAttribute('data-name') || '';
-        if(src){
-          const tester = new Image();
-          tester.onload = ()=> imgEl.src = src;
-          tester.onerror = ()=> imgEl.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='%230b66d0'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='96'>${initials(name)}</text></svg>`);
-          tester.src = src;
-        }
-        card.addEventListener('click', ()=> {
-          if(teamModal){ modalAvatar.src = imgEl.src; modalName.textContent = name; modalRole.textContent = card.getAttribute('data-role')||''; modalBio.textContent = card.getAttribute('data-bio')||''; teamModal.style.display='flex'; }
-        });
-      });
-      if(modalClose) modalClose.addEventListener('click', ()=> teamModal.style.display='none');
-
-      // graceful image fallbacks
-      document.querySelectorAll('img').forEach(img=>{
-        img.addEventListener('error', ()=> {
-          img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e6f6ff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%2306324d' font-size='18'>Image unavailable</text></svg>`);
-        });
+      // simple gallery click-to-open in new tab
+      document.querySelectorAll('.gallery-item img').forEach(img=>{
+        img.addEventListener('click', ()=> window.open(img.src, '_blank'));
       });
     })();
   </script>
