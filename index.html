@@ -7,119 +7,113 @@
 
   <style>
     :root{
-      /* vibrant blue-forward theme + accents */
-      --bg-0: #071428;
-      --bg-1: #0b4a8f;
-      --blue-500: #0ea5ff;
-      --accent-pink: #ff6b9b;
-      --muted: #b8d6ea;
-      --card: rgba(255,255,255,0.04);
-      --glass: rgba(255,255,255,0.05);
-      --radius: 14px;
-      --soft-shadow: 0 18px 60px rgba(2,6,23,0.6);
-      --glow: 0 12px 50px rgba(14,165,164,0.08);
+      --bg-0: #e8f7ff;
+      --bg-1: #dff3ff;
+      --primary: #0b66d0;
+      --accent: #26d0ce;
+      --muted: #2b4b63;
+      --card: #ffffff;
       --glass-blur: 10px;
+      --radius: 14px;
+      --soft-shadow: 0 18px 60px rgba(8,34,77,0.08);
     }
 
     *{box-sizing:border-box;margin:0;padding:0}
-    html,body{height:100%;font-family:Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;background:linear-gradient(180deg,var(--bg-0),var(--bg-1));color:#eaf6ff;-webkit-font-smoothing:antialiased}
+    html,body{height:100%;font-family:Inter,system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial;background:linear-gradient(180deg,var(--bg-0),var(--bg-1));color:var(--muted);-webkit-font-smoothing:antialiased}
     a{color:inherit;text-decoration:none}
-    img{max-width:100%;display:block}
+    img{max-width:100%;display:block;border-radius:8px}
 
     /* NAV */
-    .navbar{position:fixed;inset:0 0 auto 0;height:76px;display:flex;align-items:center;backdrop-filter:blur(var(--glass-blur));background:linear-gradient(90deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));border-bottom:1px solid rgba(255,255,255,0.03);z-index:350;padding:0 20px;transition:transform .28s,box-shadow .28s}
+    .navbar{position:fixed;inset:0 0 auto 0;height:76px;display:flex;align-items:center;z-index:300;padding:0 20px;backdrop-filter:blur(var(--glass-blur));background:linear-gradient(90deg, rgba(255,255,255,0.85), rgba(255,255,255,0.8));box-shadow:0 6px 30px rgba(10,40,80,0.06);border-bottom:1px solid rgba(11,102,208,0.06)}
     .nav-inner{max-width:1200px;margin:0 auto;width:100%;display:flex;align-items:center;justify-content:space-between;gap:16px}
     .brand{display:flex;align-items:center;gap:12px}
-    .logo-wrap{width:60px;height:60px;border-radius:12px;background:linear-gradient(135deg,var(--blue-500),var(--accent-pink));display:flex;align-items:center;justify-content:center;box-shadow:var(--glow);flex-shrink:0}
-    .brand h1{font-size:1rem;font-weight:900;letter-spacing:.6px;color:#fff;margin-left:6px}
-    .nav-links{display:flex;gap:18px;list-style:none;align-items:center}
+    .logo-wrap{width:64px;height:64px;border-radius:14px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;box-shadow:0 10px 30px rgba(11,102,208,0.12);flex-shrink:0}
+    .brand h1{font-size:1.05rem;font-weight:900;color:#06324d}
+    .nav-links{display:flex;gap:16px;list-style:none;align-items:center}
     .nav-links a{padding:8px 12px;border-radius:12px;color:var(--muted);font-weight:700;transition:all .18s}
-    .nav-links a:hover, .nav-links a.active{color:#06121a;background:linear-gradient(90deg,var(--blue-500),var(--accent-pink));box-shadow:0 10px 30px rgba(14,165,164,0.06)}
-    .mobile-toggle{display:none;background:none;border:0;font-size:22px;color:var(--blue-500);cursor:pointer}
+    .nav-links a.active, .nav-links a:hover{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;box-shadow:0 10px 30px rgba(11,102,208,0.08)}
+    .mobile-toggle{display:none;background:none;border:0;font-size:22px;color:var(--primary);cursor:pointer}
 
     /* HERO */
-    .hero{min-height:80vh;padding:120px 20px 40px;position:relative;overflow:visible;display:grid;grid-template-columns:1fr 420px;align-items:center;gap:28px}
+    .hero{min-height:86vh;padding:120px 20px 40px;position:relative;overflow:visible;display:grid;grid-template-columns:1fr 420px;align-items:center;gap:28px}
     .hero-left{max-width:720px}
-    .kicker{display:inline-block;padding:6px 12px;border-radius:999px;background:linear-gradient(90deg,var(--blue-500),var(--accent-pink));color:#06121a;font-weight:800;font-size:.82rem;margin-bottom:14px;box-shadow:0 8px 28px rgba(255,107,107,0.06)}
-    .hero h2{font-size:2.6rem;line-height:1.02;margin:6px 0 18px;font-weight:900;color:#fff;text-shadow:0 8px 40px rgba(2,6,23,0.6)}
-    .lead{color:var(--muted);font-weight:600;max-width:64ch;margin-bottom:20px}
+    .kicker{display:inline-block;padding:6px 14px;border-radius:999px;background:linear-gradient(90deg,var(--accent),var(--primary));color:#fff;font-weight:800;font-size:.85rem;margin-bottom:14px;box-shadow:0 10px 36px rgba(38,208,206,0.08)}
+    .hero h2{font-size:3rem;line-height:1.02;margin:6px 0 18px;font-weight:900;color:#06324d}
+    .lead{color:#2b4b63;font-weight:600;max-width:64ch;margin-bottom:20px}
     .cta{display:flex;gap:12px;align-items:center;flex-wrap:wrap}
     .btn{padding:12px 18px;border-radius:12px;font-weight:800;cursor:pointer;border:0;display:inline-flex;align-items:center;gap:10px}
-    .btn-primary{background:linear-gradient(90deg,var(--blue-500),var(--accent-pink));color:#06121a;box-shadow:0 18px 60px rgba(14,165,164,0.08);transform:translateY(0);transition:transform .18s}
-    .btn-primary:hover{transform:translateY(-6px);box-shadow:0 30px 100px rgba(14,165,164,0.12)}
-    .btn-ghost{background:transparent;border:1px solid rgba(255,255,255,0.06);color:var(--muted);font-weight:700}
+    .btn-primary{background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;box-shadow:0 18px 60px rgba(11,102,208,0.08)}
+    .btn-primary:hover{transform:translateY(-6px)}
+    .btn-ghost{background:#ffffff33;border:1px solid rgba(11,102,208,0.06);color:var(--primary);font-weight:800}
 
-    /* hero right card */
-    .hero-card{background:linear-gradient(180deg,rgba(255,255,255,0.02),rgba(255,255,255,0.01));padding:20px;border-radius:18px;box-shadow:var(--soft-shadow);border:1px solid rgba(255,255,255,0.03)}
+    /* hero visual card */
+    .hero-card{background:linear-gradient(180deg,#ffffff,#f3fbff);padding:22px;border-radius:16px;box-shadow:var(--soft-shadow);border:1px solid rgba(11,102,208,0.06)}
     .hero-stats{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}
-    .stat{padding:12px;border-radius:12px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));text-align:center;font-weight:900;color:#fff;box-shadow:inset 0 -6px 30px rgba(0,0,0,0.25)}
-    .stat .n{font-size:1.6rem;color:var(--blue-500)}
+    .stat{padding:14px;border-radius:12px;background:#fff;text-align:center;font-weight:800;color:var(--primary);box-shadow:inset 0 -6px 20px rgba(0,0,0,0.03)}
+    .stat .n{font-size:1.6rem;color:var(--primary)}
 
-    /* visuals */
-    .orb{position:absolute;filter:blur(46px);opacity:.14;pointer-events:none;mix-blend-mode:screen;border-radius:50%}
-    .orb.a{width:420px;height:420px;right:-80px;top:-20px;background:radial-gradient(circle at 10% 20%, var(--blue-500), transparent 40%);transform:rotate(12deg)}
-    .orb.b{width:300px;height:300px;left:-120px;bottom:-60px;background:radial-gradient(circle at 30% 30%, var(--accent-pink), transparent 40%);opacity:.10}
+    /* decorative */
+    .orb{position:absolute;border-radius:50%;filter:blur(36px);opacity:.18;pointer-events:none}
+    .orb.a{width:380px;height:380px;right:-120px;top:-40px;background:radial-gradient(circle at 20% 20%, var(--accent), transparent 40%);}
+    .orb.b{width:280px;height:280px;left:-120px;bottom:-40px;background:radial-gradient(circle at 30% 30%, var(--primary), transparent 40%);opacity:.12}
 
     /* sections */
     section{padding:72px 20px}
     .container{max-width:1100px;margin:0 auto}
-
     .section-header{text-align:center;margin-bottom:36px}
-    .section-title{font-size:1.5rem;color:#fff;font-weight:900}
+    .section-title{font-size:1.5rem;color:#06324d;font-weight:900}
     .section-sub{color:var(--muted);max-width:760px;margin:12px auto 0;font-weight:600}
 
     /* services */
     .services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:18px}
-    .service{padding:22px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 12px 40px rgba(0,0,0,0.5);border:1px solid rgba(255,255,255,0.03);transition:transform .28s,box-shadow .28s}
-    .service:hover{transform:translateY(-14px) rotate(-1deg) scale(1.02);box-shadow:0 40px 120px rgba(0,0,0,0.6)}
-    .service .icon{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--blue-500),var(--accent-pink));display:flex;align-items:center;justify-content:center;color:#06121a;font-weight:900;font-size:22px;margin-bottom:12px}
+    .service{padding:22px;border-radius:14px;background:linear-gradient(180deg,#fff,#f8feff);box-shadow:0 12px 40px rgba(11,102,208,0.04);border:1px solid rgba(11,102,208,0.04);transition:transform .28s,box-shadow .28s}
+    .service:hover{transform:translateY(-12px);box-shadow:0 30px 80px rgba(11,102,208,0.08)}
+    .service .icon{width:64px;height:64px;border-radius:12px;background:linear-gradient(135deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:22px;margin-bottom:12px}
 
     /* team */
     .team-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
-    .team-card{background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));padding:20px;border-radius:16px;box-shadow:0 14px 60px rgba(2,6,23,0.6);text-align:center;transition:transform .36s,box-shadow .36s;cursor:pointer;perspective:1200px;overflow:hidden}
-    .team-card:hover{transform:translateY(-10px) rotateX(6deg) scale(1.02);box-shadow:0 50px 160px rgba(2,6,23,0.75)}
-    .team-avatar{width:128px;height:128px;border-radius:999px;margin:0 auto 12px;overflow:hidden;display:flex;align-items:center;justify-content:center;font-weight:900;color:#06121a;font-size:28px;background:linear-gradient(135deg,var(--blue-500),var(--accent-pink));border:5px solid rgba(255,255,255,0.04);box-shadow:0 12px 38px rgba(0,0,0,0.5)}
+    .team-card{background:#fff;padding:18px;border-radius:14px;box-shadow:0 10px 40px rgba(11,102,208,0.06);text-align:center;transition:transform .36s,box-shadow .36s;cursor:pointer;overflow:hidden}
+    .team-card:hover{transform:translateY(-10px);box-shadow:0 40px 120px rgba(11,102,208,0.08)}
+    .team-avatar{width:140px;height:140px;border-radius:999px;margin:0 auto 12px;overflow:hidden;display:flex;align-items:center;justify-content:center;background:linear-gradient(135deg,var(--primary),var(--accent));border:6px solid #fff;box-shadow:0 18px 40px rgba(11,102,208,0.08)}
     .team-avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    .team-name{font-weight:900;color:#fff;margin-top:6px}
+    .team-name{font-weight:900;color:#06324d;margin-top:6px}
     .team-role{color:var(--muted);font-weight:700;margin-top:6px;font-size:.95rem}
-    .team-actions{display:flex;gap:8px;justify-content:center;margin-top:10px}
-    .lnk{display:inline-flex;align-items:center;gap:8px;padding:8px 10px;border-radius:999px;background:linear-gradient(90deg,var(--blue-500),var(--accent-pink));color:#06121a;font-weight:800;font-size:.9rem;box-shadow:0 12px 30px rgba(14,165,164,0.06);transition:transform .18s}
-    .lnk:hover{transform:translateY(-4px)}
+    .team-actions{display:flex;gap:8px;justify-content:center;margin-top:12px}
+    .lnk{display:inline-flex;align-items:center;gap:8px;padding:8px 12px;border-radius:999px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;font-weight:800;font-size:.9rem;box-shadow:0 8px 22px rgba(11,102,208,0.06)}
 
     /* gallery */
     .gallery-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:14px}
-    .gallery-item{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 12px 40px rgba(0,0,0,0.5)}
+    .gallery-item{position:relative;border-radius:12px;overflow:hidden;cursor:pointer;background:#fff;box-shadow:0 10px 30px rgba(11,102,208,0.04)}
     .gallery-item img{width:100%;height:180px;object-fit:cover;display:block;transition:transform .35s,filter .25s}
-    .gallery-item:hover img{transform:scale(1.06);filter:contrast(1.05)}
-    .gallery-caption{position:absolute;left:12px;bottom:12px;background:linear-gradient(90deg,rgba(0,0,0,0.55),rgba(0,0,0,0.3));color:#fff;padding:8px 10px;border-radius:8px;font-weight:700;font-size:.9rem}
+    .gallery-item:hover img{transform:scale(1.06)}
+    .gallery-caption{position:absolute;left:12px;bottom:12px;background:rgba(6,50,77,0.9);color:#fff;padding:8px 10px;border-radius:8px;font-weight:700;font-size:.9rem}
 
-    /* lightbox */
-    .lightbox{position:fixed;inset:0;background:rgba(2,6,23,0.85);display:flex;align-items:center;justify-content:center;padding:20px;z-index:800;opacity:0;pointer-events:none;transition:opacity .22s}
+    /* modal & lightbox */
+    .lightbox{position:fixed;inset:0;background:rgba(6,50,77,0.8);display:flex;align-items:center;justify-content:center;padding:20px;z-index:800;opacity:0;pointer-events:none;transition:opacity .22s}
     .lightbox.show{opacity:1;pointer-events:auto}
-    .lightbox img{max-width:92%;max-height:86%;border-radius:12px;box-shadow:0 60px 200px rgba(2,6,23,0.85)}
+    .lightbox img{max-width:92%;max-height:86%;border-radius:12px;box-shadow:0 60px 200px rgba(6,50,77,0.7)}
 
-    /* modal (team) */
-    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(2,6,23,0.6);z-index:900;opacity:0;pointer-events:none;transition:opacity .18s}
+    .modal{position:fixed;inset:0;display:flex;align-items:center;justify-content:center;padding:20px;background:rgba(6,50,77,0.15);z-index:900;opacity:0;pointer-events:none;transition:opacity .18s}
     .modal.show{opacity:1;pointer-events:auto}
-    .modal-card{background:linear-gradient(180deg,#071428,#0b2a4a);padding:24px;border-radius:14px;max-width:900px;width:100%;box-shadow:0 40px 140px rgba(2,6,23,0.85);display:grid;grid-template-columns:240px 1fr;gap:18px;align-items:center}
-    .modal-avatar{width:220px;height:220px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
+    .modal-card{background:#ffffff;padding:20px;border-radius:12px;max-width:900px;width:100%;box-shadow:0 40px 140px rgba(11,102,208,0.06);display:grid;grid-template-columns:220px 1fr;gap:18px;align-items:center}
+    .modal-avatar{width:200px;height:200px;border-radius:12px;overflow:hidden;display:flex;align-items:center;justify-content:center}
     .modal-avatar img{width:100%;height:100%;object-fit:cover;display:block}
-    .modal h3{margin:0;color:var(--blue-500);font-size:1.4rem}
+    .modal h3{margin:0;color:var(--primary);font-size:1.4rem}
     .modal p{color:var(--muted);line-height:1.6;margin-top:8px}
 
-    /* contact & forms */
+    /* forms */
     .contact-grid{display:grid;grid-template-columns:1fr 1fr;gap:18px;align-items:start}
-    .contact-card{padding:20px;border-radius:14px;background:linear-gradient(180deg, rgba(255,255,255,0.02), rgba(255,255,255,0.01));box-shadow:0 12px 40px rgba(0,0,0,0.5)}
-    .form-input{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(255,255,255,0.04);background:transparent;color:#fff;outline:none}
+    .contact-card{padding:20px;border-radius:14px;background:#fff;box-shadow:0 12px 40px rgba(11,102,208,0.04)}
+    .form-input{width:100%;padding:12px;border-radius:10px;border:1px solid rgba(6,50,77,0.06);background:transparent;color:var(--muted);outline:none}
     .form-input::placeholder{color:#9fb1bd}
-    .form-input:focus{box-shadow:0 10px 40px rgba(14,165,164,0.06);border-color:rgba(14,165,164,0.14)}
+    .form-input:focus{box-shadow:0 10px 40px rgba(38,208,206,0.08);border-color:rgba(11,102,208,0.16)}
 
-    footer{background:transparent;color:var(--muted);padding:36px 20px;text-align:center;margin-top:28px;border-top:1px solid rgba(255,255,255,0.02)}
+    footer{background:transparent;color:var(--muted);padding:36px 20px;text-align:center;margin-top:28px}
 
     .reveal{opacity:0;transform:translateY(12px) scale(.995);transition:all .6s cubic-bezier(.2,.9,.2,1)}
     .reveal.show{opacity:1;transform:none}
 
-    @media (max-width:1024px){ .hero{grid-template-columns:1fr} .nav-inner{padding:0} .team-grid{grid-template-columns:repeat(2,1fr)} }
+    @media (max-width:1024px){ .hero{grid-template-columns:1fr} .team-grid{grid-template-columns:repeat(2,1fr)} }
     @media (max-width:760px){
       .nav-links{display:none}
       .mobile-toggle{display:block}
@@ -133,6 +127,9 @@
       .team-grid{grid-template-columns:1fr}
       .services-grid{grid-template-columns:1fr}
     }
+
+    .animate-glow{animation:glow 3.2s ease-in-out infinite alternate}
+    @keyframes glow{from{filter:drop-shadow(0 6px 18px rgba(38,208,206,0.06))}to{filter:drop-shadow(0 20px 48px rgba(11,102,208,0.08))}}
   </style>
 </head>
 <body>
@@ -140,20 +137,13 @@
     <div class="nav-inner container">
       <a href="#home" class="brand" aria-label="Unfold Solutions home">
         <div class="logo-wrap" aria-hidden="true" title="Unfold Solutions">
-          <!-- inline logo (blue-forward) -->
-          <svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg" aria-hidden="true" role="img" width="42" height="42">
-            <defs>
-              <linearGradient id="lg" x1="0" x2="1">
-                <stop offset="0" stop-color="#0ea5ff"/>
-                <stop offset="1" stop-color="#ff6b9b"/>
-              </linearGradient>
-            </defs>
-            <rect rx="10" width="48" height="48" fill="url(#lg)"/>
-            <g transform="translate(6,6)" fill="#06121a">
-              <path d="M12 3c4 0 7 3 7 7s-3 7-7 7-7-3-7-7 3-7 7-7z" opacity="0.95"/>
-              <path d="M4 26c4 0 7-3 8-6 1 3 4 6 8 6v4H4v-4z" opacity="0.95"/>
-            </g>
-          </svg>
+          <!-- preferred logo image; fallback to inline SVG if missing -->
+          <img id="logoImg"
+               src="assets/gallery/unfold.jpg"
+               alt="Unfold Solutions logo"
+               width="46" height="46"
+               style="width:46px;height:46px;object-fit:cover;border-radius:10px;display:block"
+               onerror="this.onerror=null;this.style.objectFit='contain';this.src='data:image/svg+xml;utf8,%3Csvg%20viewBox%3D%220%200%2064%2064%22%20xmlns%3D%22http%3A//www.w3.org/2000/svg%22%3E%3Crect%20rx%3D%2212%22%20width%3D%2264%22%20height%3D%2264%22%20fill%3D%22%230b66d0%22/%3E%3Cg%20transform%3D%22translate(10%2C12)%22%20fill%3D%22%23fff%22%20opacity%3D%220.95%22%3E%3Cpath%20d%3D%22M22%202c6%200%2011%205%2011%2011s-5%2011-11%2011S11%2019%2011%2013%2016%202%2022%202z%22/%3E%3Cpath%20d%3D%22M4%2034c6%200%2011-5%2013-11%202%206%207%2011%2013%2011v5H4v-5z%22%20opacity%3D%220.95%22/%3E%3C/g%3E%3C/svg%3E';">
         </div>
         <h1>Unfold Solutions</h1>
       </a>
@@ -172,8 +162,8 @@
   </nav>
 
   <header id="home" class="hero" aria-labelledby="heroTitle">
-    <div class="orb a" aria-hidden="true"></div>
-    <div class="orb b" aria-hidden="true"></div>
+    <div class="orb a animate-glow" aria-hidden="true"></div>
+    <div class="orb b animate-glow" aria-hidden="true"></div>
 
     <div class="hero-left container">
       <span class="kicker">People • Product • Impact</span>
@@ -187,9 +177,9 @@
 
       <div style="margin-top:18px;display:flex;gap:14px;align-items:center;color:var(--muted)">
         <div style="display:flex;gap:10px;align-items:center">
-          <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(90deg,var(--blue-500),var(--accent-pink));display:flex;align-items:center;justify-content:center;color:#06121a;font-weight:800">✓</div>
+          <div style="width:48px;height:48px;border-radius:10px;background:linear-gradient(90deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:800">✓</div>
           <div>
-            <div style="font-weight:800;color:#fff">Trusted partnerships</div>
+            <div style="font-weight:800;color:#06324d">Trusted partnerships</div>
             <div style="color:var(--muted)">Delivering capacity & systems since 2016</div>
           </div>
         </div>
@@ -198,7 +188,7 @@
 
     <aside class="hero-card" aria-hidden="true">
       <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:12px">
-        <div style="font-weight:900;color:#fff">Quick stats</div>
+        <div style="font-weight:900;color:var(--primary)">Quick stats</div>
         <div style="color:var(--muted)">Snapshot</div>
       </div>
       <div class="hero-stats">
@@ -218,23 +208,23 @@
 
     <div style="display:grid;grid-template-columns:1fr 1fr;gap:20px;align-items:center">
       <div class="contact-card">
-        <h3 style="color:var(--blue-500);margin-bottom:8px">What we do</h3>
-        <p style="color:var(--muted);line-height:1.6">Strategy & advisory, learning & development, digital transformation, data systems and program delivery. We emphasise local ownership and measurable impact.</p>
+        <h3 style="color:var(--primary);margin-bottom:8px">What we do</h3>
+        <p style="color:var(--muted);line-height:1.6">We deliver Strategy & Advisory, Learning & Development, and Digital & Data services. We design human-centred programs, build data and product systems, and support teams to scale with measurable outcomes.</p>
         <ul style="margin-top:12px;color:var(--muted);line-height:1.8;padding-left:18px">
-          <li>Context-first design</li>
-          <li>Data & performance systems</li>
-          <li>Blended learning & mentoring</li>
+          <li>Context-first strategy & systems design</li>
+          <li>Blended learning, mentoring & curriculum</li>
+          <li>Cloud, data & product engineering for scale</li>
         </ul>
       </div>
 
       <div style="display:grid;grid-template-columns:1fr 1fr;gap:12px">
         <div class="contact-card">
-          <strong style="color:var(--blue-500);font-size:1.1rem">Our approach</strong>
-          <div style="color:var(--muted);margin-top:8px">Research → Prototype → Build → Scale</div>
+          <strong style="color:var(--primary);font-size:1.1rem">Our approach</strong>
+          <div style="color:var(--muted);margin-top:8px">Research → Prototype → Build → Transfer → Scale</div>
         </div>
         <div class="contact-card">
-          <strong style="color:var(--accent-pink);font-size:1.1rem">Outcomes</strong>
-          <div style="color:var(--muted);margin-top:8px">Skills built, systems improved, evidence of change.</div>
+          <strong style="color:var(--accent);font-size:1.1rem">Outcomes</strong>
+          <div style="color:var(--muted);margin-top:8px">Local ownership, improved performance, and documented evidence of impact.</div>
         </div>
       </div>
     </div>
@@ -251,17 +241,17 @@
       <div class="service" data-service="strategy">
         <div class="icon">🧭</div>
         <h4>Strategy & Advisory</h4>
-        <p style="color:var(--muted)">Organizational strategy, M&E, systems design and change management.</p>
+        <p style="color:var(--muted)">Organizational strategy, monitoring & evaluation, systems design and change management with clear KPIs.</p>
       </div>
       <div class="service" data-service="learning">
         <div class="icon">🎓</div>
         <h4>Learning & Development</h4>
-        <p style="color:var(--muted)">Curriculum design, blended learning and mentoring for sustained growth.</p>
+        <p style="color:var(--muted)">Curriculum design, blended learning pathways, mentorship and coaching to embed skills.</p>
       </div>
       <div class="service" data-service="digital">
         <div class="icon">⚙️</div>
         <h4>Digital & Data</h4>
-        <p style="color:var(--muted)">Cloud & data systems, product design and automation for scale.</p>
+        <p style="color:var(--muted)">Product design, cloud & data systems, automation and dashboards for decision-making at scale.</p>
       </div>
     </div>
   </section>
@@ -275,47 +265,38 @@
 
     <div class="team-grid" id="teamGrid">
       <!-- Mekonnen -->
-      <div class="team-card" data-name="Mekonnen Mengesha" data-role="Head of Organizational Learning & Growth" data-bio="15+ years in organisational learning, capacity building and program delivery." data-src="assets/team/mekonnen.jpg" tabindex="0">
+      <div class="team-card" data-name="Mekonnen Mengesha" data-role="Head of Organizational Learning & Growth" data-bio="15+ years designing learning programs, training thousands and building sustainable capacity in public and NGO sectors." data-src="assets/team/mekonnen.jpg" tabindex="0">
         <div class="team-avatar" aria-hidden="true">
-          <img alt="Mekonnen Mengesha" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%230b4a8f'/%3E%3Ctext%20x='50%25'%20y='52%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23fff'%20font-size='96'%3EMM%3C/text%3E%3C/svg%3E">
+          <img alt="Mekonnen Mengesha" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%230b66d0'/%3E%3Ctext%20x='50%25'%20y='52%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23fff'%20font-size='96'%3EMM%3C/text%3E%3C/svg%3E">
         </div>
         <div class="team-name">Mekonnen Mengesha</div>
         <div class="team-role">Head of Organizational Learning & Growth</div>
         <div class="team-actions">
-          <a class="lnk" href="https://www.linkedin.com/in/mekonnen-mengesha-w-semayate/" target="_blank" rel="noopener noreferrer" aria-label="Mekonnen on LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#06121a" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4zM9 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.04 0 4.78 2.66 4.78 6.12V24h-4v-8.1c0-1.93-.03-4.4-2.68-4.4-2.69 0-3.1 2.1-3.1 4.27V24H9z"/></svg>
-            LinkedIn
-          </a>
+          <a class="lnk" href="https://www.linkedin.com/in/mekonnen-mengesha-w-semayate/" target="_blank" rel="noopener noreferrer" aria-label="Mekonnen on LinkedIn">LinkedIn</a>
         </div>
       </div>
 
       <!-- Chere -->
-      <div class="team-card" data-name="Chere Lemma" data-role="Head of Technology & Process Optimization" data-bio="Systems architect focused on human-centred processes and automation." data-src="assets/team/chere.jpg" tabindex="0">
+      <div class="team-card" data-name="Chere Lemma" data-role="Head of Technology & Process Optimization" data-bio="Systems architect and engineer focused on human-centred processes, automation and resilient platforms." data-src="assets/team/chere.jpg" tabindex="0">
         <div class="team-avatar" aria-hidden="true">
-          <img alt="Chere Lemma" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%230ea5ff'/%3E%3Ctext%20x='50%25'%20y='52%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23fff'%20font-size='96'%3ECL%3C/text%3E%3C/svg%3E">
+          <img alt="Chere Lemma" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%230b66d0'/%3E%3Ctext%20x='50%25'%20y='52%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23fff'%20font-size='96'%3ECL%3C/text%3E%3C/svg%3E">
         </div>
         <div class="team-name">Chere Lemma</div>
         <div class="team-role">Head of Technology & Process Optimization</div>
         <div class="team-actions">
-          <a class="lnk" href="https://www.linkedin.com/in/chere-lemma-urgaya/" target="_blank" rel="noopener noreferrer" aria-label="Chere on LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#06121a" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4zM9 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.04 0 4.78 2.66 4.78 6.12V24h-4v-8.1c0-1.93-.03-4.4-2.68-4.4-2.69 0-3.1 2.1-3.1 4.27V24H9z"/></svg>
-            LinkedIn
-          </a>
+          <a class="lnk" href="https://www.linkedin.com/in/chere-lemma-urgaya/" target="_blank" rel="noopener noreferrer" aria-label="Chere on LinkedIn">LinkedIn</a>
         </div>
       </div>
 
       <!-- Dawit -->
-      <div class="team-card" data-name="Dawit Teshome" data-role="Head of Business Innovation & Consultancy" data-bio="Business strategist and product lead with a focus on impact and scale." data-src="assets/team/dawit.jpg" tabindex="0">
+      <div class="team-card" data-name="Dawit Teshome" data-role="Head of Business Innovation & Consultancy" data-bio="Product and business strategist delivering growth-oriented product initiatives and partnerships." data-src="assets/team/dawit.jpg" tabindex="0">
         <div class="team-avatar" aria-hidden="true">
           <img alt="Dawit Teshome" src="data:image/svg+xml;utf8,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20width='400'%20height='400'%3E%3Crect%20width='100%25'%20height='100%25'%20fill='%23ffd67a'/%3E%3Ctext%20x='50%25'%20y='52%25'%20dominant-baseline='middle'%20text-anchor='middle'%20fill='%23061a21'%20font-size='96'%3EDT%3C/text%3E%3C/svg%3E">
         </div>
         <div class="team-name">Dawit Teshome</div>
         <div class="team-role">Head of Business Innovation & Consultancy</div>
         <div class="team-actions">
-          <a class="lnk" href="https://www.linkedin.com/in/dawit-teshome-gebresenbet/" target="_blank" rel="noopener noreferrer" aria-label="Dawit on LinkedIn">
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="#06121a" xmlns="http://www.w3.org/2000/svg"><path d="M4.98 3.5C4.98 4.88 3.87 6 2.5 6S0 4.88 0 3.5 1.12 1 2.5 1 4.98 2.12 4.98 3.5zM.5 8h4V24h-4zM9 8h3.8v2.2h.05c.53-1 1.83-2.2 3.77-2.2 4.04 0 4.78 2.66 4.78 6.12V24h-4v-8.1c0-1.93-.03-4.4-2.68-4.4-2.69 0-3.1 2.1-3.1 4.27V24H9z"/></svg>
-            LinkedIn
-          </a>
+          <a class="lnk" href="https://www.linkedin.com/in/dawit-teshome-gebresenbet/" target="_blank" rel="noopener noreferrer" aria-label="Dawit on LinkedIn">LinkedIn</a>
         </div>
       </div>
     </div>
@@ -325,16 +306,16 @@
   <section id="gallery" class="container reveal">
     <div class="section-header">
       <div class="section-title">Project Gallery</div>
-      <div class="section-sub">Curated images. Click to view.</div>
+      <div class="section-sub">Curated images showing our work and impact — click to enlarge.</div>
     </div>
 
     <div class="gallery-grid" id="galleryGrid">
+      <div class="gallery-item card"><img src="assets/gallery/unfold.jpg" alt="Unfold overview" loading="lazy"><div class="gallery-caption">Unfold — Overview</div></div>
       <div class="gallery-item card"><img src="assets/gallery/project-1.png" alt="Project 1" loading="lazy"><div class="gallery-caption">Workshop — 2025</div></div>
       <div class="gallery-item card"><img src="assets/gallery/project-2.png" alt="Project 2" loading="lazy"><div class="gallery-caption">Pilot Site</div></div>
       <div class="gallery-item card"><img src="assets/gallery/project-3.png" alt="Project 3" loading="lazy"><div class="gallery-caption">Community Event</div></div>
       <div class="gallery-item card"><img src="assets/gallery/project-4.png" alt="Project 4" loading="lazy"><div class="gallery-caption">Training Session</div></div>
       <div class="gallery-item card"><img src="assets/gallery/project-5.png" alt="Project 5" loading="lazy"><div class="gallery-caption">Stakeholder Meeting</div></div>
-      <div class="gallery-item card"><img src="assets/gallery/project-6.png" alt="Project 6" loading="lazy"><div class="gallery-caption">Launch</div></div>
     </div>
 
     <div id="lightbox" class="lightbox" role="dialog" aria-hidden="true">
@@ -351,20 +332,20 @@
 
     <div class="contact-grid">
       <div class="contact-card">
-        <div style="font-weight:800;color:var(--blue-500);margin-bottom:10px">Get in touch</div>
+        <div style="font-weight:800;color:var(--primary);margin-bottom:10px">Get in touch</div>
         <div style="display:grid;gap:12px">
           <div style="display:flex;gap:10px;align-items:center">
-            <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--blue-500),var(--accent-pink));display:flex;align-items:center;justify-content:center;color:#06121a">✉️</div>
-            <div><strong>Email</strong><div style="color:var(--muted)">unfoldbusinesssolutions@gmail.com</div></div>
+            <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff">✉️</div>
+            <div><strong>Email</strong><div style="color:var(--muted)">contact@unfoldsolutions.com</div></div>
           </div>
 
           <div style="display:flex;gap:10px;align-items:center">
-            <div style="width:44px;height:44px;border-radius:10px;background:#06121a;display:flex;align-items:center;justify-content:center;color:#fff">📞</div>
+            <div style="width:44px;height:44px;border-radius:10px;background:#06324d;display:flex;align-items:center;justify-content:center;color:#fff">📞</div>
             <div><strong>Phone</strong><div style="color:var(--muted)">+251 910 832 473</div></div>
           </div>
 
           <div style="display:flex;gap:10px;align-items:center">
-            <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--blue-500),var(--accent-pink));display:flex;align-items:center;justify-content:center;color:#06121a">📍</div>
+            <div style="width:44px;height:44px;border-radius:10px;background:linear-gradient(90deg,var(--primary),var(--accent));display:flex;align-items:center;justify-content:center;color:#fff">📍</div>
             <div><strong>Address</strong><div style="color:var(--muted)">22 Quality Bldg, Addis Ababa</div></div>
           </div>
         </div>
@@ -386,7 +367,7 @@
 
   <footer>
     <div class="container" style="max-width:900px">
-      <div style="font-weight:900;font-size:1.05rem;color:#fff">Unfold Solutions</div>
+      <div style="font-weight:900;font-size:1.05rem;color:#06324d">Unfold Solutions</div>
       <div style="opacity:.85;margin:8px 0;color:var(--muted)">© <span id="year"></span> Unfold Solutions — All rights reserved.</div>
       <div style="color:var(--muted);font-size:.95rem">Bringing ideas &amp; innovation to life through people-centered technology and learning</div>
     </div>
@@ -404,12 +385,12 @@
     </div>
   </div>
 
-  <div id="backTop" title="Back to top" style="position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--blue-500),var(--accent-pink));color:#06121a;border-radius:12px;padding:12px 14px;cursor:pointer;display:none;z-index:400">↑</div>
+  <div id="backTop" title="Back to top" style="position:fixed;right:18px;bottom:18px;background:linear-gradient(90deg,var(--primary),var(--accent));color:#fff;border-radius:12px;padding:12px 14px;cursor:pointer;display:none;z-index:400">↑</div>
 
   <!-- SCRIPTS -->
   <script>
     (function(){
-      // mobile toggle
+      /* mobile toggle */
       const mobileToggle = document.getElementById('mobileToggle');
       const navLinks = document.getElementById('navLinks');
       if(mobileToggle){
@@ -418,17 +399,18 @@
           else {
             navLinks.style.display = 'flex';
             navLinks.style.flexDirection = 'column';
-            navLinks.style.background = 'rgba(0,0,0,0.6)';
+            navLinks.style.background = 'rgba(255,255,255,0.95)';
             navLinks.style.position = 'absolute';
             navLinks.style.right = '18px';
             navLinks.style.top = '64px';
             navLinks.style.padding = '12px';
             navLinks.style.borderRadius = '12px';
+            navLinks.style.boxShadow = '0 10px 30px rgba(11,102,208,0.06)';
           }
         });
       }
 
-      // scroll spy + smooth scroll
+      /* smooth scroll + scroll spy */
       const links = document.querySelectorAll('.nav-link');
       function onScrollSpy() {
         const fromTop = window.scrollY + 160;
@@ -451,7 +433,7 @@
       window.addEventListener('scroll', onScrollSpy);
       onScrollSpy();
 
-      // contact form simulated submit
+      /* contact form simulated submit */
       const cForm = document.getElementById('contactForm');
       if(cForm){
         cForm.addEventListener('submit', function(e){
@@ -462,15 +444,15 @@
           btn.disabled = true;
           setTimeout(()=> {
             btn.textContent = 'Sent ✓';
-            setTimeout(()=>{ btn.textContent = prev; btn.disabled=false; cForm.reset(); }, 1500);
+            setTimeout(()=>{ btn.textContent = prev; btn.disabled=false; cForm.reset(); }, 1400);
           },900);
         });
       }
 
-      // year
+      /* year */
       document.getElementById('year').textContent = new Date().getFullYear();
 
-      // reveal on scroll
+      /* reveal on scroll */
       const observer = new IntersectionObserver((entries)=>{
         entries.forEach(entry=>{
           if(entry.isIntersecting) entry.target.classList.add('show');
@@ -478,7 +460,7 @@
       }, {threshold: 0.12});
       document.querySelectorAll('.reveal').forEach(el => observer.observe(el));
 
-      // back to top
+      /* back to top */
       const backTop = document.getElementById('backTop');
       window.addEventListener('scroll', ()=> {
         if(window.scrollY > 320) backTop.style.display = 'block';
@@ -486,14 +468,14 @@
       });
       backTop.addEventListener('click', ()=> window.scrollTo({top:0,behavior:'smooth'}));
 
-      // counters
+      /* counters */
       document.querySelectorAll('[data-count]').forEach(el=>{
         const final = parseInt(el.getAttribute('data-count'),10) || 0;
         let val = 0; const step = Math.max(1, Math.floor(final/30));
         const id = setInterval(()=>{ val += step; if(val >= final){ el.textContent = final + (final>=100?'+':''); clearInterval(id);} else el.textContent = val; },30);
       });
 
-      // gallery lightbox
+      /* gallery lightbox */
       const lightbox = document.getElementById('lightbox');
       const lightboxImg = document.getElementById('lightboxImg');
       const galleryImgs = Array.from(document.querySelectorAll('.gallery-item img'));
@@ -519,7 +501,7 @@
         }
       });
 
-      // TEAM: try load team images from assets/team/*.jpg — fallback to initials SVG; enable modal details
+      /* TEAM: load images if available, fallback to initials; open modal on click */
       const teamCards = Array.from(document.querySelectorAll('.team-card'));
       const modal = document.getElementById('teamModal');
       const modalAvatar = modal.querySelector('.modal-avatar img');
@@ -539,15 +521,17 @@
 
         if(src){
           const test = new Image();
-          test.onload = ()=> { imgEl.src = src; };
+          test.onload = ()=> { imgEl.src = src; imgEl.style.objectFit = 'cover'; };
           test.onerror = ()=> {
-            const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='%230b4a8f'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='96'>${initials(name)}</text></svg>`;
+            const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='%230b66d0'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='96'>${initials(name)}</text></svg>`;
             imgEl.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+            imgEl.style.objectFit = 'contain';
           };
           test.src = src;
         } else {
-          const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='%230b4a8f'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='96'>${initials(name)}</text></svg>`;
+          const svg = `<svg xmlns='http://www.w3.org/2000/svg' width='400' height='400'><rect width='100%' height='100%' fill='%230b66d0'/><text x='50%' y='52%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='96'>${initials(name)}</text></svg>`;
           imgEl.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(svg);
+          imgEl.style.objectFit = 'contain';
         }
 
         function openProfile(){
@@ -564,25 +548,27 @@
         card.addEventListener('keydown', (e)=>{ if(e.key==='Enter' || e.key===' ') openProfile(); });
       });
 
-      modalClose.addEventListener('click', ()=> { modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); });
+      if(modalClose){
+        modalClose.addEventListener('click', ()=> { modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); });
+      }
       modal.addEventListener('click', (e)=> { if(e.target === modal) { modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); }});
       document.addEventListener('keydown', (e)=>{ if(e.key==='Escape'){ modal.classList.remove('show'); modal.setAttribute('aria-hidden','true'); }});
 
-      // gallery placeholder safety
+      /* gallery placeholder safety */
       document.querySelectorAll('.gallery-item img').forEach(img=>{
         img.addEventListener('error', ()=> {
-          img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%2320222a'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%23fff' font-size='20'>Image unavailable</text></svg>`);
+          img.src = 'data:image/svg+xml;utf8,' + encodeURIComponent(`<svg xmlns='http://www.w3.org/2000/svg' width='800' height='600'><rect width='100%' height='100%' fill='%23e6f6ff'/><text x='50%' y='50%' dominant-baseline='middle' text-anchor='middle' fill='%2306324d' font-size='18'>Image unavailable</text></svg>`);
         });
       });
 
-      // micro-interactions for services
+      /* small interactions */
       document.querySelectorAll('.service').forEach(s=>{
-        s.addEventListener('mouseenter', ()=> s.style.transform = 'translateY(-10px) scale(1.02)');
+        s.addEventListener('mouseenter', ()=> s.style.transform = 'translateY(-8px) scale(1.02)');
         s.addEventListener('mouseleave', ()=> s.style.transform = '');
       });
 
-      // initial activation
-      onScrollSpy();
+      /* initial activation */
+      onScrollSpy && onScrollSpy();
     })();
   </script>
 </body>
